@@ -321,7 +321,9 @@ class CharacterDetail extends Resource:
 class CharacterType extends Resource:
 	@export var path_type: String# = Field(alias="pathType")
 	@export var combat_type: String# = Field(alias="combatType")
-
+	
+	#func _init(dic) -> void:
+		
 
 #class Character extends Resource:
 	#@export var id: int

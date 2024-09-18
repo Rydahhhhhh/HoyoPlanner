@@ -5,7 +5,6 @@ static func format_str(text: String) -> String:
 	var clean = RegEx.create_from_string(r"<.*?>|\{SPRITE_PRESET#[^\}]+\}")
 	return remove_ruby_tags(replace_pronouns(clean.sub(text, "").replace("\\n", "\n")))
 
-
 static func find_next_letter(text: String, placeholder: String) -> String:
 	"""Find the next letter after a placeholder in a string"""
 	var index = text.find(placeholder)
@@ -36,7 +35,6 @@ static func replace_placeholders(string: String, params: Variant) -> String:
 			string = string.replace(placeholder, str(value))
 	return string
 
-
 static func replace_pronouns(text: String) -> String:
 	var female_pronoun_pattern := RegEx.create_from_string(r"\{F#(.*?)\}")
 	var male_pronoun_pattern := RegEx.create_from_string(r"\{M#(.*?)\}")
@@ -54,7 +52,6 @@ static func replace_pronouns(text: String) -> String:
 		text = text.replace("#", "")
 
 	return text
-
 
 static func remove_ruby_tags(text: String) -> String:
 	# Remove {RUBY_E#} tags

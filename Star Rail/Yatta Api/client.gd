@@ -73,13 +73,12 @@ func fetch_characters(use_cache: bool = true) -> Array[SrCharacter]:
 		if days_since_update > 7:
 			use_cache = false
 	
-	if not use_cache or true:
+	if not use_cache:
 		for c in (await request("avatar")).data.items.values():
 			characters.append(SrCharacter.new(c))
-		
 		characters_cache.data = characters
 		characters_cache.last_update = Time.get_unix_time_from_system()
 		update_cache()
 	else:
 		print("Using cache for 'fetch_characters'")
-	return characters
+	return characters_cache.data

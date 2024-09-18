@@ -1,10 +1,10 @@
-class_name SrCharacter extends "res://Star Rail/Yatta Api/models/character base.gd"
+class_name SrCharacter extends YattaResource
 
 @export var id: int
 @export var name: String
 @export var rarity: int
 @export var icon: String: get = _icon
-@export var types: CharacterType
+@export var types: SrCharacterType
 @export var route: String
 @export var beta: bool = false
 @export var release_at: int 
@@ -20,11 +20,6 @@ var round_icon: String:
 
 func _icon():
 	return "https://api.yatta.top/hsr/assets/UI/avatar/%s.png" % icon
-
-func _init(data: Dictionary = {}) -> void:
-	print_debug("help")
-	print(123213)
-	return
 
 func _get(property: StringName) -> Variant:
 	match property:
