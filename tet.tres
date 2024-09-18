@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+
+[sub_resource type="GDScript" id="GDScript_yr3fo"]
+
+[resource]
+script = SubResource("GDScript_yr3fo")
+id = 0
+name = ""
+rarity = 0
+icon = "https://api.yatta.top/hsr/assets/UI/avatar/.png"
+route = ""
+beta = false
+release_at = 0
