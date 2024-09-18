@@ -9,6 +9,11 @@ class_name SrCharacter extends YattaResource
 @export var beta: bool = false
 @export var release_at: int 
 
+const alias := {
+	"rarity": "rank",
+	"release_at": "release"
+}
+
 var medium_icon: String: 
 	get(): return icon.replace("avatar", "avatar/medium")
 
@@ -21,9 +26,8 @@ var round_icon: String:
 func _icon():
 	return "https://api.yatta.top/hsr/assets/UI/avatar/%s.png" % icon
 
-func _get(property: StringName) -> Variant:
+func property_alias(property: StringName):
 	match property:
-		"rank": return self.rarity 
-		"release": return self.release_at
-	
-	return
+		"rarity": return "rank" 
+		"release_at": return "release"
+	return 
