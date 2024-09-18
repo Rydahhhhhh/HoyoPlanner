@@ -1,4 +1,4 @@
-extends Resource
+class_name SrCharacterModel extends Resource
 
 const Enums = preload("res://Star Rail/Yatta Api/enums.gd")
 
@@ -323,37 +323,37 @@ class CharacterType extends Resource:
 	@export var combat_type: String# = Field(alias="combatType")
 
 
-class Character extends Resource:
-	@export var id: int
-	@export var name: String
-	@export var rarity: int
-	@export var icon: String: get = _icon
-	@export var types: CharacterType
-	@export var route: String
-	@export var beta: bool = false
-	@export var release_at: int 
-	
-	var medium_icon: String: 
-		get(): return icon.replace("avatar", "avatar/medium")
-	
-	var large_icon: String: 
-		get(): return icon.replace("avatar", "avatar/large")
-	
-	var round_icon: String: 
-		get(): return icon.replace("avatar", "avatar/round")
-	
-	func _icon():
-		return "https://api.yatta.top/hsr/assets/UI/avatar/%s.png" % icon
-	
-	func _init(data: Dictionary) -> void:
-		return
-	
-	func _get(property: StringName) -> Variant:
-		match property:
-			"rank": return self.rarity 
-			"release": return self.release_at
-		
-		return
+#class Character extends Resource:
+	#@export var id: int
+	#@export var name: String
+	#@export var rarity: int
+	#@export var icon: String: get = _icon
+	#@export var types: CharacterType
+	#@export var route: String
+	#@export var beta: bool = false
+	#@export var release_at: int 
+	#
+	#var medium_icon: String: 
+		#get(): return icon.replace("avatar", "avatar/medium")
+	#
+	#var large_icon: String: 
+		#get(): return icon.replace("avatar", "avatar/large")
+	#
+	#var round_icon: String: 
+		#get(): return icon.replace("avatar", "avatar/round")
+	#
+	#func _icon():
+		#return "https://api.yatta.top/hsr/assets/UI/avatar/%s.png" % icon
+	#
+	#func _init(data: Dictionary) -> void:
+		#return
+	#
+	#func _get(property: StringName) -> Variant:
+		#match property:
+			#"rank": return self.rarity 
+			#"release": return self.release_at
+		#
+		#return
 #
 	#@field_validator("release_at", mode="before")
 	 #func _convert_release_at(cls, v: int | None) -> datetime.datetime | None:

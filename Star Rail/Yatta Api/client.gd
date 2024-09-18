@@ -1,7 +1,6 @@
 extends Node
 
 const Exceptions = preload("res://Star Rail/Yatta Api/exceptions.gd")
-const Character = preload("res://Star Rail/Yatta Api/models/character.gd").Character
 
 const Language := {
 	CHT = "cht",
@@ -21,30 +20,31 @@ const Language := {
 const BASE_URL := "https://api.yatta.top/hsr/v2"
 const CACHE_PATH = "user://StarRailCache.dat"
 
-static var lang = Language.EN
-static var cache: Dictionary:
+#func _ready() -> void:
+	#DirAccess.remove_absolute(CACHE_PATH)
+
+var lang = Language.EN
+var cache: Dictionary:
 	get():
 		if cache.get("Loaded", false):
 			return cache
 		if not FileAccess.file_exists(CACHE_PATH):
-			var file = FileAccess.open(CACHE_PATH, FileAccess.WRITE)
-			file.store_var({}, true)
+			FileAccess.open(CACHE_PATH, FileAccess.WRITE).store_var({}, true)
 			
-		var file = FileAccess.open(CACHE_PATH, FileAccess.READ)
-		cache = file.get_var(true)
+		cache = FileAccess.open(CACHE_PATH, FileAccess.READ).get_var(true)
 		cache.Loaded = true
 		return cache
 
-static func update_cache():
+func update_cache():
 	var _cache = cache
 	_cache.erase("Loaded")
 	
-	var file = FileAccess.open(CACHE_PATH, FileAccess.WRITE)
-	file.store_var(_cache, true)
+	FileAccess.open(CACHE_PATH, FileAccess.WRITE).store_var(_cache, true)
+	
 	cache.Loaded = false
 	return
 
-static func request(endpoint: String, is_static: bool = false) -> Dictionary:
+func request(endpoint: String, is_static: bool = false) -> Dictionary:
 	var url = "{BASE_URL}/{lang}/{endpoint}".format({"lang": lang})
 	if is_static:
 		url = "{BASE_URL}/static/{endpoint}"
@@ -57,8 +57,8 @@ static func request(endpoint: String, is_static: bool = false) -> Dictionary:
 	return await Api.fetch(url)
 
 
-static func fetch_characters(use_cache: bool = true) -> Array[Character]:
-	var characters: Array[Character] = []
+func fetch_characters(use_cache: bool = true) -> Array[SrCharacter]:
+	var characters: Array[SrCharacter] = []
 	
 	var characters_cache = cache.get_or_add("characters", {})
 	
@@ -73,13 +73,13 @@ static func fetch_characters(use_cache: bool = true) -> Array[Character]:
 		if days_since_update > 7:
 			use_cache = false
 	
-	if not use_cache:
-		#print(await request("avatar"))
+	if not use_cache or true:
 		for c in (await request("avatar")).data.items.values():
-			characters.append(Character.new(c))
+			characters.append(SrCharacter.new(c))
 		
 		characters_cache.data = characters
 		characters_cache.last_update = Time.get_unix_time_from_system()
 		update_cache()
-	
-	return characters_cache.data
+	else:
+		print("Using cache for 'fetch_characters'")
+	return characters

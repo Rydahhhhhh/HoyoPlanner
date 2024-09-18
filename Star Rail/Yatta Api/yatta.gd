@@ -1,3 +1,3 @@
 extends Node
 
-const Client = preload("res://Star Rail/Yatta Api/client.gd")
+var Client = preload("res://Star Rail/Yatta Api/client.gd").new()
