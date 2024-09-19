@@ -4,12 +4,11 @@ const alias := {
 	"point_type": "pointType",
 	"point_position": "pointPosition",
 	"max_level": "maxLevel",
-	"is_funcaultREAL": "is funcault",
+	"is_default": "isDefault",
 	"avatar_level_limit": "avatarLevelLimit",
 	"avatar_promotion_limit": "avatarPromotionLimit",
-	"skill_Array": "skillArray",
-	"status_Array": "statusArray",
-	"REAL": "ALIAS",
+	"skill_Array": "skillList",
+	"status_Array": "statusList",
 }
 
 @export var id: int
@@ -19,7 +18,7 @@ const alias := {
 @export var point_type: String
 @export var point_position: String
 @export var max_level: int
-@export var is_funcault: String
+@export var is_default: bool
 
 @export var avatar_level_limit: int
 @export var avatar_promotion_limit: int

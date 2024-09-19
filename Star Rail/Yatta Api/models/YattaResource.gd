@@ -18,8 +18,8 @@ func _init(data: Dictionary = {}) -> void:
 			match property.type:
 				TYPE_ARRAY:
 					set(prop_name, [])
+					# Types arrays moment
 					get(prop_name).append_array(property_value)
-					print(0)
 				TYPE_STRING, TYPE_INT, TYPE_FLOAT, TYPE_DICTIONARY, TYPE_OBJECT:
 					set(prop_name, property_value)
 				_:
@@ -103,7 +103,7 @@ static func construct_property(type: int, hint_string: String, value):
 							TYPE_DICTIONARY:
 								var nested_resource = construct_property(nested_type, nested_hint_string, nested_value)
 								nested_properties.append(nested_resource)
-							TYPE_STRING, TYPE_INT, TYPE_FLOAT:
+							TYPE_STRING, TYPE_INT, TYPE_FLOAT, TYPE_NIL:
 								var nested_resource = construct_property(nested_type, nested_hint_string, {})
 								
 								nested_resource.set_as_positional(0, nested_key)
@@ -111,10 +111,10 @@ static func construct_property(type: int, hint_string: String, value):
 								
 								nested_properties.append(nested_resource)
 							_:
-								assert(false)
+								assert(false, "Unknown nested_value type " + type_string(nested_value))
 				_:
-					assert(false)
+					assert(false, "Unknown value type " + type_string(value))
 			return nested_properties
 		_:
-			assert(false)
+			assert(false, "Unknown type " + type_string(type))
 	return

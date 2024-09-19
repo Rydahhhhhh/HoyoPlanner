@@ -1,6 +1,4 @@
 class_name SrSkillPromote extends YattaResource
 
-const alias := {
-	"REAL": "ALIAS",
-}
-
+@export var id: int
+@export var amount: int

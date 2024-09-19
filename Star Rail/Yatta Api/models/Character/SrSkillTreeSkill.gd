@@ -6,4 +6,4 @@ const alias := {
 
 @export var id: int
 @export var points_direction: String
-@export var points: Array[int]
+@export var points: Array[float]

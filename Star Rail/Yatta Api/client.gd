@@ -110,7 +110,7 @@ func fetch_character_detail(id: int, use_cache: bool = true):
 	else:
 		print("Using cache for 'fetch_character_detail'")
 	
-	#ResourceSaver.save(character_detail_cache.data, 'lingsha.tres')
+	ResourceSaver.save(character_detail_cache.data, 'lingsha.tres')
 	
 	return character_detail_cache.data
 
