@@ -42,6 +42,7 @@ func update_cache():
 	FileAccess.open(CACHE_PATH, FileAccess.WRITE).store_var(_cache, true)
 	
 	cache.Loaded = false
+	print(cache)
 	return
 
 func request(endpoint: String, is_static: bool = false) -> Dictionary:
@@ -56,15 +57,13 @@ func request(endpoint: String, is_static: bool = false) -> Dictionary:
 	
 	return await Api.fetch(url)
 
-
-func fetch_characters(use_cache: bool = true) -> Array[SrCharacter]:
-	var characters: Array[SrCharacter] = []
+func validate_cache(key):
+	var cached_data = cache.get_or_add(key, {})
 	
-	var characters_cache = cache.get_or_add("characters", {})
+	var last_update = cached_data.get("last_update", null)
+	var data = cached_data.get("data", null)
 	
-	var last_update = characters_cache.get("last_update", null)
-	var data = characters_cache.get("data", null)
-	
+	var use_cache = true
 	if null in [last_update, data]:
 		use_cache = false
 	else:
@@ -73,12 +72,65 @@ func fetch_characters(use_cache: bool = true) -> Array[SrCharacter]:
 		if days_since_update > 7:
 			use_cache = false
 	
-	if not use_cache:
+	#if not use_cache:
+		#for c in (await request("avatar")).data.items.values():
+			#characters.append(SrCharacter.new(c))
+		#characters_cache.data = characters
+		#characters_cache.last_update = Time.get_unix_time_from_system()
+		#update_cache()
+	#else:
+		#print("Using cache for 'fetch_characters'")
+	#return characters_cache.data
+	
+	return use_cache
+
+func fetch_characters(use_cache: bool = true) -> Array[SrCharacter]:
+	var characters_cache: YattaCache = cache.get_or_add("characters", YattaCache.new())
+	
+	if not use_cache or characters_cache.invalid:
+		var characters: Array[SrCharacter] = []
 		for c in (await request("avatar")).data.items.values():
 			characters.append(SrCharacter.new(c))
+		
 		characters_cache.data = characters
-		characters_cache.last_update = Time.get_unix_time_from_system()
 		update_cache()
 	else:
 		print("Using cache for 'fetch_characters'")
+	
 	return characters_cache.data
+
+func fetch_character_detail(id: int, use_cache: bool = true):
+	var character_details: Dictionary = cache.get_or_add("character detail", {})
+	var character_detail_cache: YattaCache = character_details.get_or_add(id, YattaCache.new())
+	
+	if not use_cache or character_detail_cache.invalid:
+		var data = (await request("avatar/%s" % id)).data
+		character_detail_cache.data = SrCharacterDetail.new(data)
+		#update_cache()
+	else:
+		print("Using cache for 'fetch_characters'")
+	
+	return character_detail_cache.data
+
+	#var character_detail_cache = cache.get("character_detail")
+	
+	#var last_update = character_detail_cache.get("last_update", null)
+	#var data = character_detail_cache.get("data", null)
+	#
+	#if null in [last_update, data]:
+		#use_cache = false
+	#else:
+		#var time_since_update = Time.get_unix_time_from_system() - last_update
+		#var days_since_update = Time.get_date_dict_from_unix_time(time_since_update).day - 1
+		#if days_since_update > 7:
+			#use_cache = false
+	#
+	#if not use_cache:
+		##for c in (await request("avatar")).data.items.values():
+			##characters.append(SrCharacter.new(c))
+		##character_detail_cache.data = characters
+		##character_detail_cache.last_update = Time.get_unix_time_from_system()
+		#update_cache()
+	#else:
+		#print("Using cache for 'fetch_characters'")
+	#return character_detail_cache.data

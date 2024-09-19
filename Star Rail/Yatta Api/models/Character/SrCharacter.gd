@@ -14,6 +14,9 @@ const alias := {
 	"release_at": "release"
 }
 
+func _icon():
+	return "https://api.yatta.top/hsr/assets/UI/avatar/%s.png" % icon
+
 var medium_icon: String: 
 	get(): return icon.replace("avatar", "avatar/medium")
 
@@ -23,11 +26,16 @@ var large_icon: String:
 var round_icon: String: 
 	get(): return icon.replace("avatar", "avatar/round")
 
-func _icon():
-	return "https://api.yatta.top/hsr/assets/UI/avatar/%s.png" % icon
 
-func property_alias(property: StringName):
-	match property:
-		"rarity": return "rank" 
-		"release_at": return "release"
-	return 
+#func load_icon():
+	#Api.fetch(icon)
+	#pass
+#
+#func load_medium_icon():
+	#pass
+#
+#func load_large_icon():
+	#pass
+#
+#func load_round_icon():
+	#pass

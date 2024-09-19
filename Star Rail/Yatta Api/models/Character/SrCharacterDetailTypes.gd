@@ -1,4 +1,4 @@
-class_name SrCharacterType extends YattaResource
+class_name SrCharacterDetailTypes extends YattaResource
 
 const alias := {
 	"path_type": "pathType",
