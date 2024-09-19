@@ -5,5 +5,5 @@ const alias := {
 	"combat_type": "combatType",
 }
 
-@export var path_type: String
-@export var combat_type: String
+@export var path_type: Dictionary
+@export var combat_type: Dictionary

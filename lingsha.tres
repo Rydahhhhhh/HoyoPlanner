@@ -1,0 +1,417 @@
+[gd_resource type="Resource" script_class="SrCharacterDetail" load_steps=56 format=3 uid="uid://w8ywk55io0xt"]
+
+[ext_resource type="Script" path="res://Star Rail/Yatta Api/models/Character/SrCharacterAscensionItem.gd" id="1_cyi6e"]
+[ext_resource type="Script" path="res://Star Rail/Yatta Api/models/Character/SrCharacterEidolon.gd" id="2_v6vpi"]
+[ext_resource type="Script" path="res://Star Rail/Yatta Api/models/Character/SrSkillAdd.gd" id="3_6n5kk"]
+[ext_resource type="Script" path="res://Star Rail/Yatta Api/models/Character/SrCharacterInfo.gd" id="4_xxyys"]
+[ext_resource type="Script" path="res://Star Rail/Yatta Api/models/Character/SrCharacterDetail.gd" id="5_2gema"]
+[ext_resource type="Script" path="res://Star Rail/Yatta Api/models/Character/SrCharacterTraces.gd" id="6_osdow"]
+[ext_resource type="Script" path="res://Star Rail/Yatta Api/models/Character/SrCharacterDetailTypes.gd" id="7_j2kj0"]
+[ext_resource type="Script" path="res://Star Rail/Yatta Api/models/Character/SrCharacterUpgrade.gd" id="8_hxqv8"]
+[ext_resource type="Script" path="res://Star Rail/Yatta Api/models/Character/SrCharacterCostItem.gd" id="9_y6x6u"]
+
+[sub_resource type="Resource" id="Resource_yelsj"]
+script = ExtResource("1_cyi6e")
+id = 2
+amount = 3
+
+[sub_resource type="Resource" id="Resource_ss5gk"]
+script = ExtResource("1_cyi6e")
+id = 241
+amount = 5
+
+[sub_resource type="Resource" id="Resource_ga8l7"]
+script = ExtResource("1_cyi6e")
+id = 110241
+amount = 2
+
+[sub_resource type="Resource" id="Resource_uv3wq"]
+script = ExtResource("1_cyi6e")
+id = 110242
+amount = 3
+
+[sub_resource type="Resource" id="Resource_ca34n"]
+script = ExtResource("1_cyi6e")
+id = 110243
+amount = 4
+
+[sub_resource type="Resource" id="Resource_e4eck"]
+script = ExtResource("1_cyi6e")
+id = 110422
+amount = 4
+
+[sub_resource type="Resource" id="Resource_y0oj3"]
+script = ExtResource("1_cyi6e")
+id = 110506
+amount = 4
+
+[sub_resource type="Resource" id="Resource_3qvrw"]
+script = ExtResource("1_cyi6e")
+id = 113001
+amount = 2
+
+[sub_resource type="Resource" id="Resource_q5yy2"]
+script = ExtResource("1_cyi6e")
+id = 113002
+amount = 3
+
+[sub_resource type="Resource" id="Resource_xpwst"]
+script = ExtResource("1_cyi6e")
+id = 113003
+amount = 4
+
+[sub_resource type="Resource" id="Resource_ti627"]
+script = ExtResource("2_v6vpi")
+id = 122201
+rank = 1
+name = "Bloom on Vileward Bouquet"
+params = Array[float]([0.2, 0.5])
+description = "Lingsha's Weakness Break Efficiency increases by <unbreak>#2[i]%</unbreak>. When an enemy unit's Weakness is Broken, reduces their DEF by <unbreak>#1[i]%</unbreak>."
+skill_add_level_Array = Array[ExtResource("3_6n5kk")]([])
+icon = "SkillIcon_1222_Rank1"
+
+[sub_resource type="Resource" id="Resource_sfu7e"]
+script = ExtResource("2_v6vpi")
+id = 122202
+rank = 2
+name = "Leisure in Carmine Smokeveil"
+params = Array[float]([0.4, 3.0])
+description = "When using Ultimate, increases all allies' Break Effect by <unbreak>#1[i]%</unbreak>, lasting for <unbreak>#2[i]</unbreak> turn(s)."
+skill_add_level_Array = Array[ExtResource("3_6n5kk")]([])
+icon = "SkillIcon_1222_Rank2"
+
+[sub_resource type="Resource" id="Resource_6rox7"]
+script = ExtResource("3_6n5kk")
+id = 122203
+level = 2
+
+[sub_resource type="Resource" id="Resource_xxmjm"]
+script = ExtResource("3_6n5kk")
+id = 122204
+level = 2
+
+[sub_resource type="Resource" id="Resource_qs2v6"]
+script = ExtResource("2_v6vpi")
+id = 122203
+rank = 3
+name = "Shine of Floral Wick"
+params = Array[float]([])
+description = "Ultimate Lv. +2, up to a maximum of Lv. <unbreak>15</unbreak>.\\nTalent Lv. +2, up to a maximum of Lv. <unbreak>15</unbreak>."
+skill_add_level_Array = Array[ExtResource("3_6n5kk")]([SubResource("Resource_6rox7"), SubResource("Resource_xxmjm")])
+icon = "SkillIcon_1222_Ultra"
+
+[sub_resource type="Resource" id="Resource_lriei"]
+script = ExtResource("2_v6vpi")
+id = 122204
+rank = 4
+name = "Redolence from Canopied Banquet"
+params = Array[float]([0.4])
+description = "When Fuyuan takes action, restores HP equal to <unbreak>#1[i]%</unbreak> of Lingsha's ATK for the ally whose current HP is the lowest."
+skill_add_level_Array = Array[ExtResource("3_6n5kk")]([])
+icon = "SkillIcon_1222_Rank4"
+
+[sub_resource type="Resource" id="Resource_if2sd"]
+script = ExtResource("3_6n5kk")
+id = 122201
+level = 1
+
+[sub_resource type="Resource" id="Resource_tawtm"]
+script = ExtResource("3_6n5kk")
+id = 122202
+level = 2
+
+[sub_resource type="Resource" id="Resource_xxpae"]
+script = ExtResource("2_v6vpi")
+id = 122205
+rank = 5
+name = "Poise Atop Twists and Turns"
+params = Array[float]([])
+description = "Skill Lv. +2, up to a maximum of Lv. <unbreak>15</unbreak>.\\nBasic ATK Lv. +1, up to a maximum of Lv. <unbreak>10</unbreak>."
+skill_add_level_Array = Array[ExtResource("3_6n5kk")]([SubResource("Resource_if2sd"), SubResource("Resource_tawtm")])
+icon = "SkillIcon_1222_BP"
+
+[sub_resource type="Resource" id="Resource_cm5p3"]
+script = ExtResource("2_v6vpi")
+id = 122206
+rank = 6
+name = "Arcadia Under Deep Seclusion"
+params = Array[float]([0.2, 4.0, 0.5, 5.0])
+description = "While Fuyuan is on the field, reduces all enemies' All-Type RES by <unbreak>#1[i]%</unbreak>. When Fuyuan attacks, additionally deals <unbreak>#2[i]</unbreak> instance(s) of DMG, with each instance dealing both Fire DMG equal to <unbreak>#3[i]%</unbreak> of Lingsha's ATK and a Toughness Reduction of <unbreak>#4[i]</unbreak> to a single random enemy. This prioritizes targets with both Toughness greater than 0 and Fire Weakness."
+skill_add_level_Array = Array[ExtResource("3_6n5kk")]([])
+icon = "SkillIcon_1222_Rank6"
+
+[sub_resource type="Resource" id="Resource_gwbk8"]
+script = ExtResource("4_xxyys")
+faction = "The Xianzhou Luofu"
+description = "The new Cauldron Master of the Xianzhou Luofu's Alchemy Commission is one perceptive and intelligent Vidyadhara healer.\\nWith a keen sense of smell, she diagnoses ailments and calms minds with aromatic therapy.\\nAdept at navigating complex social relationships, she can remain impeccably composed even when turmoil rages within."
+voice_actors = {
+"CV_CN": "饶梓君",
+"CV_EN": "Whitney Holland",
+"CV_JP": "前田佳織里",
+"CV_KR": "장예나"
+}
+
+[sub_resource type="Resource" id="Resource_n7vpm"]
+script = ExtResource("6_osdow")
+
+[sub_resource type="Resource" id="Resource_2q806"]
+script = ExtResource("7_j2kj0")
+path_type = {
+"id": "Priest",
+"name": "Abundance"
+}
+combat_type = {
+"id": "Fire",
+"name": "Fire"
+}
+
+[sub_resource type="Resource" id="Resource_32hru"]
+script = ExtResource("9_y6x6u")
+id = 2
+amount = 4000.0
+
+[sub_resource type="Resource" id="Resource_t0u6m"]
+script = ExtResource("9_y6x6u")
+id = 113001
+amount = 5.0
+
+[sub_resource type="Resource" id="Resource_lltok"]
+script = ExtResource("8_hxqv8")
+level = 0
+cost_items = Array[ExtResource("9_y6x6u")]([SubResource("Resource_32hru"), SubResource("Resource_t0u6m")])
+max_level = 20
+required_player_level = 15
+required_world_level = 0
+skill_base = {
+"attackBase": 92.4,
+"baseAggro": 100.0,
+"criticalChance": 0.05,
+"criticalDamage": 0.5,
+"defenceBase": 59.4,
+"hPBase": 184.8,
+"speedBase": 98.0
+}
+skill_add = {
+"attackAdd": 4.62,
+"defenceAdd": 2.97,
+"hPAdd": 9.24
+}
+
+[sub_resource type="Resource" id="Resource_ksaj6"]
+script = ExtResource("9_y6x6u")
+id = 2
+amount = 8000.0
+
+[sub_resource type="Resource" id="Resource_xgd3i"]
+script = ExtResource("9_y6x6u")
+id = 113001
+amount = 10.0
+
+[sub_resource type="Resource" id="Resource_qf4fs"]
+script = ExtResource("8_hxqv8")
+level = 1
+cost_items = Array[ExtResource("9_y6x6u")]([SubResource("Resource_ksaj6"), SubResource("Resource_xgd3i")])
+max_level = 30
+required_player_level = 0
+required_world_level = 1
+skill_base = {
+"attackBase": 129.36,
+"baseAggro": 100.0,
+"criticalChance": 0.05,
+"criticalDamage": 0.5,
+"defenceBase": 83.16,
+"hPBase": 258.72,
+"speedBase": 98.0
+}
+skill_add = {
+"attackAdd": 4.62,
+"defenceAdd": 2.97,
+"hPAdd": 9.24
+}
+
+[sub_resource type="Resource" id="Resource_do4aw"]
+script = ExtResource("9_y6x6u")
+id = 2
+amount = 16000.0
+
+[sub_resource type="Resource" id="Resource_neqp4"]
+script = ExtResource("9_y6x6u")
+id = 110422
+amount = 3.0
+
+[sub_resource type="Resource" id="Resource_yfqe1"]
+script = ExtResource("9_y6x6u")
+id = 113002
+amount = 6.0
+
+[sub_resource type="Resource" id="Resource_v6kte"]
+script = ExtResource("8_hxqv8")
+level = 2
+cost_items = Array[ExtResource("9_y6x6u")]([SubResource("Resource_do4aw"), SubResource("Resource_neqp4"), SubResource("Resource_yfqe1")])
+max_level = 40
+required_player_level = 0
+required_world_level = 2
+skill_base = {
+"attackBase": 166.32,
+"baseAggro": 100.0,
+"criticalChance": 0.05,
+"criticalDamage": 0.5,
+"defenceBase": 106.92,
+"hPBase": 332.64,
+"speedBase": 98.0
+}
+skill_add = {
+"attackAdd": 4.62,
+"defenceAdd": 2.97,
+"hPAdd": 9.24
+}
+
+[sub_resource type="Resource" id="Resource_6spya"]
+script = ExtResource("9_y6x6u")
+id = 2
+amount = 40000.0
+
+[sub_resource type="Resource" id="Resource_i5inh"]
+script = ExtResource("9_y6x6u")
+id = 110422
+amount = 7.0
+
+[sub_resource type="Resource" id="Resource_r6b4n"]
+script = ExtResource("9_y6x6u")
+id = 113002
+amount = 9.0
+
+[sub_resource type="Resource" id="Resource_bypib"]
+script = ExtResource("8_hxqv8")
+level = 3
+cost_items = Array[ExtResource("9_y6x6u")]([SubResource("Resource_6spya"), SubResource("Resource_i5inh"), SubResource("Resource_r6b4n")])
+max_level = 50
+required_player_level = 0
+required_world_level = 3
+skill_base = {
+"attackBase": 203.28,
+"baseAggro": 100.0,
+"criticalChance": 0.05,
+"criticalDamage": 0.5,
+"defenceBase": 130.68,
+"hPBase": 406.56,
+"speedBase": 98.0
+}
+skill_add = {
+"attackAdd": 4.62,
+"defenceAdd": 2.97,
+"hPAdd": 9.24
+}
+
+[sub_resource type="Resource" id="Resource_xaipu"]
+script = ExtResource("9_y6x6u")
+id = 2
+amount = 80000.0
+
+[sub_resource type="Resource" id="Resource_gui0h"]
+script = ExtResource("9_y6x6u")
+id = 110422
+amount = 20.0
+
+[sub_resource type="Resource" id="Resource_3850e"]
+script = ExtResource("9_y6x6u")
+id = 113003
+amount = 6.0
+
+[sub_resource type="Resource" id="Resource_1hrlf"]
+script = ExtResource("8_hxqv8")
+level = 4
+cost_items = Array[ExtResource("9_y6x6u")]([SubResource("Resource_xaipu"), SubResource("Resource_gui0h"), SubResource("Resource_3850e")])
+max_level = 60
+required_player_level = 0
+required_world_level = 4
+skill_base = {
+"attackBase": 240.24,
+"baseAggro": 100.0,
+"criticalChance": 0.05,
+"criticalDamage": 0.5,
+"defenceBase": 154.44,
+"hPBase": 480.48,
+"speedBase": 98.0
+}
+skill_add = {
+"attackAdd": 4.62,
+"defenceAdd": 2.97,
+"hPAdd": 9.24
+}
+
+[sub_resource type="Resource" id="Resource_baejr"]
+script = ExtResource("9_y6x6u")
+id = 2
+amount = 160000.0
+
+[sub_resource type="Resource" id="Resource_xsw58"]
+script = ExtResource("9_y6x6u")
+id = 110422
+amount = 35.0
+
+[sub_resource type="Resource" id="Resource_agxos"]
+script = ExtResource("9_y6x6u")
+id = 113003
+amount = 9.0
+
+[sub_resource type="Resource" id="Resource_4qeb5"]
+script = ExtResource("8_hxqv8")
+level = 5
+cost_items = Array[ExtResource("9_y6x6u")]([SubResource("Resource_baejr"), SubResource("Resource_xsw58"), SubResource("Resource_agxos")])
+max_level = 70
+required_player_level = 0
+required_world_level = 5
+skill_base = {
+"attackBase": 277.2,
+"baseAggro": 100.0,
+"criticalChance": 0.05,
+"criticalDamage": 0.5,
+"defenceBase": 178.2,
+"hPBase": 554.4,
+"speedBase": 98.0
+}
+skill_add = {
+"attackAdd": 4.62,
+"defenceAdd": 2.97,
+"hPAdd": 9.24
+}
+
+[sub_resource type="Resource" id="Resource_7yc1u"]
+script = ExtResource("8_hxqv8")
+level = 6
+cost_items = Array[ExtResource("9_y6x6u")]([])
+max_level = 80
+required_player_level = 0
+required_world_level = 5
+skill_base = {
+"attackBase": 314.16,
+"baseAggro": 100.0,
+"criticalChance": 0.05,
+"criticalDamage": 0.5,
+"defenceBase": 201.96,
+"hPBase": 628.32,
+"speedBase": 98.0
+}
+skill_add = {
+"attackAdd": 4.62,
+"defenceAdd": 2.97,
+"hPAdd": 9.24
+}
+
+[resource]
+script = ExtResource("5_2gema")
+id = 1222
+name = "Lingsha"
+beta = false
+rarity = 5
+types = SubResource("Resource_2q806")
+icon = "1222"
+release = 1727859600
+route = "Lingsha"
+info = SubResource("Resource_gwbk8")
+upgrades = Array[ExtResource("8_hxqv8")]([SubResource("Resource_lltok"), SubResource("Resource_qf4fs"), SubResource("Resource_v6kte"), SubResource("Resource_bypib"), SubResource("Resource_1hrlf"), SubResource("Resource_4qeb5"), SubResource("Resource_7yc1u")])
+traces = SubResource("Resource_n7vpm")
+eidolons = Array[ExtResource("2_v6vpi")]([SubResource("Resource_ti627"), SubResource("Resource_sfu7e"), SubResource("Resource_qs2v6"), SubResource("Resource_lriei"), SubResource("Resource_xxpae"), SubResource("Resource_cm5p3")])
+ascension = Array[ExtResource("1_cyi6e")]([SubResource("Resource_yelsj"), SubResource("Resource_ss5gk"), SubResource("Resource_ga8l7"), SubResource("Resource_uv3wq"), SubResource("Resource_ca34n"), SubResource("Resource_e4eck"), SubResource("Resource_y0oj3"), SubResource("Resource_3qvrw"), SubResource("Resource_q5yy2"), SubResource("Resource_xpwst")])
+release_at = 0

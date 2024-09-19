@@ -1,5 +1,12 @@
 class_name SrCharacterDetail extends YattaResource
 
+const alias := {
+	"rarity": "rank",
+	"release_at": "release",
+	"info": "fetter",
+	"upgrades": "upgrade"
+}
+
 @export var id: int
 @export var name: String
 @export var beta: bool = false
@@ -15,10 +22,3 @@ class_name SrCharacterDetail extends YattaResource
 @export var ascension: Array[SrCharacterAscensionItem]
 @export var sr_script: SrCharacterScript
 @export var release_at: int
-
-const alias := {
-	"rarity": "rank",
-	"release_at": "release",
-	"info": "fetter",
-	"upgrades": "upgrade"
-}

@@ -163,7 +163,7 @@ class BaseSkill extends Resource:
 	@export var icon: String
 	@export var params: Dictionary#[String, Array[float]] | None
 
-	#var promote: Array[SkillPromote]
+	@export var promote: Array[SkillPromote]
 
 	#@field_validator("skill_Array", mode="before")
 	 #func _convert_skill_Array(cls, v: dict[str, dict[str, Any]] | None) -> Array[SkillArraySkill]:

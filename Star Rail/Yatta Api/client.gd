@@ -106,9 +106,11 @@ func fetch_character_detail(id: int, use_cache: bool = true):
 	if not use_cache or character_detail_cache.invalid:
 		var data = (await request("avatar/%s" % id)).data
 		character_detail_cache.data = SrCharacterDetail.new(data)
-		#update_cache()
+		update_cache()
 	else:
-		print("Using cache for 'fetch_characters'")
+		print("Using cache for 'fetch_character_detail'")
+	
+	#ResourceSaver.save(character_detail_cache.data, 'lingsha.tres')
 	
 	return character_detail_cache.data
 
