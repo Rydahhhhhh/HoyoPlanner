@@ -62,10 +62,12 @@ text = "1"
 alignment = 1
 
 [node name="InputLv BasicAtk Add" type="Button" parent="Container InputLv BasicAtk/InputLv BasicAtk Row 1"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "+1"
 
 [node name="InputLv BasicAtk Max" type="Button" parent="Container InputLv BasicAtk/InputLv BasicAtk Row 1"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Max"
@@ -87,10 +89,12 @@ text = "1"
 alignment = 1
 
 [node name="InputLv Skill Add" type="Button" parent="Container InputLv Skill/InputLv Skill Row 1"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "+1"
 
 [node name="InputLv Skill Max" type="Button" parent="Container InputLv Skill/InputLv Skill Row 1"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Max
 "
@@ -112,34 +116,38 @@ text = "1"
 alignment = 1
 
 [node name="InputLv Ultimate Add" type="Button" parent="Container InputLv Ultimate/Container InputLv Ultimate Row 1"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "+1"
 
 [node name="InputLv Ultimate Max" type="Button" parent="Container InputLv Ultimate/Container InputLv Ultimate Row 1"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Max"
 
-[node name="LevelSelect Container talent" type="VBoxContainer" parent="."]
+[node name="Container InputLv Talent" type="VBoxContainer" parent="."]
 custom_minimum_size = Vector2(0, 31)
 layout_mode = 2
 size_flags_horizontal = 5
 metadata/_edit_lock_ = true
 
-[node name="VBoxContainer" type="HBoxContainer" parent="LevelSelect Container talent"]
+[node name="Container InputLv Talent" type="HBoxContainer" parent="Container InputLv Talent"]
 layout_mode = 2
 
-[node name="InputLv Talent" type="LineEdit" parent="LevelSelect Container talent/VBoxContainer"]
+[node name="InputLv Talent" type="LineEdit" parent="Container InputLv Talent/Container InputLv Talent"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "1"
 alignment = 1
 
-[node name="InputLv Talent Add" type="Button" parent="LevelSelect Container talent/VBoxContainer"]
+[node name="InputLv Talent Add" type="Button" parent="Container InputLv Talent/Container InputLv Talent"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "+1"
 
-[node name="InputLv Talent Max" type="Button" parent="LevelSelect Container talent/VBoxContainer"]
+[node name="InputLv Talent Max" type="Button" parent="Container InputLv Talent/Container InputLv Talent"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Max"
 
