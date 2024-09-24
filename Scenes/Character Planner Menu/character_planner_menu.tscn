@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cw8toj2wvpp2p"]
+[gd_scene load_steps=7 format=3 uid="uid://cw8toj2wvpp2p"]
 
 [ext_resource type="Script" path="res://Scenes/Character Planner Menu/character_planner_menu.gd" id="1_ckroi"]
+[ext_resource type="PackedScene" uid="uid://by4fblho7gyhf" path="res://Scenes/Character Planner Menu/Input Column.tscn" id="2_a14fo"]
+[ext_resource type="Script" path="res://Scenes/Character Planner Menu/input_column.gd" id="3_1sygw"]
 
 [sub_resource type="SystemFont" id="SystemFont_xckqa"]
 font_names = PackedStringArray("Segoe UI")
@@ -255,3 +257,8 @@ text = "[right]ATK [color=efdb32]+4%"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
+
+[node name="Input Column" type="VBoxContainer" parent="." instance=ExtResource("2_a14fo")]
+layout_mode = 2
+script = ExtResource("3_1sygw")
+metadata/_edit_lock_ = true
