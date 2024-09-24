@@ -1,0 +1,209 @@
+[gd_scene load_steps=3 format=3 uid="uid://by4fblho7gyhf"]
+
+[ext_resource type="Script" path="res://Scenes/Character Planner Menu/input_column.gd" id="1_qrb1m"]
+[ext_resource type="Script" path="res://Scenes/Character Planner Menu/level_select_input.gd" id="2_ye2nh"]
+
+[node name="Input Column" type="VBoxContainer"]
+script = ExtResource("1_qrb1m")
+metadata/_edit_lock_ = true
+
+[node name="LevelSelect Container lv" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 66)
+layout_mode = 2
+size_flags_horizontal = 5
+metadata/_edit_lock_ = true
+
+[node name="LevelSelectRow1" type="HBoxContainer" parent="LevelSelect Container lv"]
+layout_mode = 2
+
+[node name="LevelSelectInput" type="LineEdit" parent="LevelSelect Container lv/LevelSelectRow1"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "1"
+alignment = 1
+script = ExtResource("2_ye2nh")
+
+[node name="LevelSelectAscCheckBtn" type="CheckButton" parent="LevelSelect Container lv/LevelSelectRow1"]
+layout_mode = 2
+
+[node name="LevelSelectRow2" type="HBoxContainer" parent="LevelSelect Container lv"]
+layout_mode = 2
+
+[node name="LevelSelectNextAsc" type="Button" parent="LevelSelect Container lv/LevelSelectRow2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Next Asc"
+
+[node name="LevelSelectMax" type="Button" parent="LevelSelect Container lv/LevelSelectRow2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Max"
+
+[node name="LevelSelect Container batk" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 31)
+layout_mode = 2
+size_flags_horizontal = 5
+metadata/_edit_lock_ = true
+
+[node name="VBoxContainer" type="HBoxContainer" parent="LevelSelect Container batk"]
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="LevelSelect Container batk/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "1"
+alignment = 1
+
+[node name="CheckButton" type="Button" parent="LevelSelect Container batk/VBoxContainer"]
+layout_mode = 2
+text = "+1"
+
+[node name="LevelSelectMax" type="Button" parent="LevelSelect Container batk/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Max"
+
+[node name="LevelSelect Container skill" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 31)
+layout_mode = 2
+size_flags_horizontal = 5
+metadata/_edit_lock_ = true
+
+[node name="VBoxContainer" type="HBoxContainer" parent="LevelSelect Container skill"]
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="LevelSelect Container skill/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "1"
+alignment = 1
+
+[node name="CheckButton" type="Button" parent="LevelSelect Container skill/VBoxContainer"]
+layout_mode = 2
+text = "+1"
+
+[node name="LevelSelect Container ultimate" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 31)
+layout_mode = 2
+size_flags_horizontal = 5
+metadata/_edit_lock_ = true
+
+[node name="VBoxContainer" type="HBoxContainer" parent="LevelSelect Container ultimate"]
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="LevelSelect Container ultimate/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "1"
+alignment = 1
+
+[node name="CheckButton" type="Button" parent="LevelSelect Container ultimate/VBoxContainer"]
+layout_mode = 2
+text = "+1"
+
+[node name="LevelSelect Container talent" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 31)
+layout_mode = 2
+size_flags_horizontal = 5
+metadata/_edit_lock_ = true
+
+[node name="VBoxContainer" type="HBoxContainer" parent="LevelSelect Container talent"]
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="LevelSelect Container talent/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "1"
+alignment = 1
+
+[node name="CheckButton" type="Button" parent="LevelSelect Container talent/VBoxContainer"]
+layout_mode = 2
+text = "+1"
+
+[node name="Spacing" type="Control" parent="."]
+custom_minimum_size = Vector2(0, 23)
+layout_mode = 2
+size_flags_horizontal = 4
+metadata/_edit_lock_ = true
+
+[node name="CheckBox" type="CheckBox" parent="."]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_horizontal = 4
+icon_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="CheckBox2" type="CheckBox" parent="."]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_horizontal = 4
+icon_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="CheckBox3" type="CheckBox" parent="."]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_horizontal = 4
+icon_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="CheckBox11" type="CheckBox" parent="."]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_horizontal = 4
+icon_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Spacing2" type="Control" parent="."]
+custom_minimum_size = Vector2(0, 23)
+layout_mode = 2
+size_flags_horizontal = 4
+metadata/_edit_lock_ = true
+
+[node name="CheckBox4" type="CheckBox" parent="."]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_horizontal = 4
+metadata/_edit_lock_ = true
+
+[node name="CheckBox5" type="CheckBox" parent="."]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_horizontal = 4
+metadata/_edit_lock_ = true
+
+[node name="CheckBox6" type="CheckBox" parent="."]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_horizontal = 4
+metadata/_edit_lock_ = true
+
+[node name="CheckBox7" type="CheckBox" parent="."]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_horizontal = 4
+metadata/_edit_lock_ = true
+
+[node name="Control3" type="Control" parent="."]
+custom_minimum_size = Vector2(0, 23)
+layout_mode = 2
+size_flags_horizontal = 4
+metadata/_edit_lock_ = true
+
+[node name="CheckBox8" type="CheckBox" parent="."]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_horizontal = 4
+metadata/_edit_lock_ = true
+
+[node name="CheckBox9" type="CheckBox" parent="."]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_horizontal = 4
+metadata/_edit_lock_ = true
+
+[node name="CheckBox10" type="CheckBox" parent="."]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_horizontal = 4
+metadata/_edit_lock_ = true

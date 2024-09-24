@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhs0i2qtjms88"]
+
+[ext_resource type="Script" path="res://Scenes/main/main.gd" id="1_xpno6"]
+[ext_resource type="PackedScene" uid="uid://cw8toj2wvpp2p" path="res://Scenes/Character Planner Menu/character_planner_menu.tscn" id="2_1jedn"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xpno6")
+metadata/_edit_lock_ = true
+
+[node name="Character Planner Menu" parent="." instance=ExtResource("2_1jedn")]
+layout_mode = 1
