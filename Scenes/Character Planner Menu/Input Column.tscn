@@ -15,7 +15,7 @@ metadata/_edit_lock_ = true
 [node name="LevelSelectRow1" type="HBoxContainer" parent="LevelSelect Container lv"]
 layout_mode = 2
 
-[node name="Input Character Lv" type="LineEdit" parent="LevelSelect Container lv/LevelSelectRow1"]
+[node name="InputLv Character" type="LineEdit" parent="LevelSelect Container lv/LevelSelectRow1"]
 unique_name_in_owner = true
 layout_direction = 2
 layout_mode = 2
@@ -52,7 +52,7 @@ metadata/_edit_lock_ = true
 [node name="VBoxContainer" type="HBoxContainer" parent="LevelSelect Container batk"]
 layout_mode = 2
 
-[node name="Input BAtk Lv" type="LineEdit" parent="LevelSelect Container batk/VBoxContainer"]
+[node name="InputLv BasicAtk" type="LineEdit" parent="LevelSelect Container batk/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -77,7 +77,7 @@ metadata/_edit_lock_ = true
 [node name="VBoxContainer" type="HBoxContainer" parent="LevelSelect Container skill"]
 layout_mode = 2
 
-[node name="Input Skill Lv" type="LineEdit" parent="LevelSelect Container skill/VBoxContainer"]
+[node name="InputLv Skill" type="LineEdit" parent="LevelSelect Container skill/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -97,7 +97,7 @@ metadata/_edit_lock_ = true
 [node name="VBoxContainer" type="HBoxContainer" parent="LevelSelect Container ultimate"]
 layout_mode = 2
 
-[node name="Input Ultimate Lv" type="LineEdit" parent="LevelSelect Container ultimate/VBoxContainer"]
+[node name="InputLv Ultimate" type="LineEdit" parent="LevelSelect Container ultimate/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -117,7 +117,7 @@ metadata/_edit_lock_ = true
 [node name="VBoxContainer" type="HBoxContainer" parent="LevelSelect Container talent"]
 layout_mode = 2
 
-[node name="Input Talent Lv" type="LineEdit" parent="LevelSelect Container talent/VBoxContainer"]
+[node name="InputLv Talent" type="LineEdit" parent="LevelSelect Container talent/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
