@@ -1,8 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://cepk0jmque4m8"]
+[gd_scene load_steps=2 format=3 uid="uid://ceqf0sud2bgtn"]
 
-[ext_resource type="Script" path="res://sr_input_column.gd" id="1_clmhy"]
+[ext_resource type="Script" path="res://Scenes/Character Planner Menu/sr_input_column.gd" id="1_clmhy"]
 
-[node name="SR Input Column" type="VBoxContainer"]
-offset_right = 44.0
-offset_bottom = 100.0
+[node name="SrInputColumn" type="VBoxContainer"]
 script = ExtResource("1_clmhy")

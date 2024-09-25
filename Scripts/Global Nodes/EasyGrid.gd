@@ -48,6 +48,7 @@ func add_grid_column(node: VBoxContainer):
 		add_child(node, true)
 		node.owner = self
 	queue_sort()
+	return node
 
 # ====================================================== #
 #                      END OF FILE                       #

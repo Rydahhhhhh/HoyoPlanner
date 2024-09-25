@@ -4,15 +4,15 @@
 [ext_resource type="Script" path="res://Scenes/Character Planner Menu/input_lv_container.gd" id="1_7xweu"]
 
 [node name="InputLvContainer" type="VBoxContainer"]
-size_flags_horizontal = 0
-size_flags_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("1_7xweu")
-preset = "Expanded"
 metadata/_edit_lock_ = true
 
 [node name="InputLvContainer Row 1" type="HBoxContainer" parent="."]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_vertical = 3
 metadata/_edit_lock_ = true
 
 [node name="InputLv" parent="InputLvContainer Row 1" instance=ExtResource("1_5gaae")]
@@ -47,6 +47,7 @@ metadata/_edit_lock_ = true
 [node name="InputLvContainer Row 2" type="HBoxContainer" parent="."]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_vertical = 3
 metadata/_edit_lock_ = true
 
 [node name="InputLv Max" type="Button" parent="InputLvContainer Row 2"]
@@ -59,6 +60,7 @@ metadata/_edit_lock_ = true
 [node name="InputLv Cycle" type="Button" parent="InputLvContainer Row 2"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 mouse_default_cursor_shape = 2
 text = "Next Asc"
 metadata/_edit_lock_ = true
@@ -67,12 +69,14 @@ metadata/_edit_lock_ = true
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
+size_flags_vertical = 3
 metadata/_edit_lock_ = true
 
 [node name="InputLvContainer Row 4" type="HBoxContainer" parent="."]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
+size_flags_vertical = 3
 metadata/_edit_lock_ = true
 
 [connection signal="pressed" from="InputLvContainer Row 1/InputLv Add" to="." method="add_pressed"]

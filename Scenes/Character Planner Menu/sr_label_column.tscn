@@ -16,7 +16,7 @@ font_names = PackedStringArray("Segoe UI")
 font_weight = 600
 subpixel_positioning = 0
 
-[node name="SR Label Columns" type="VBoxContainer"]
+[node name="SrLabelColumn" type="VBoxContainer"]
 script = ExtResource("1_0mbws")
 metadata/_edit_lock_ = true
 

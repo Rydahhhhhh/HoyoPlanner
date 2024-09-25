@@ -1,45 +1,38 @@
 @tool
 extends EasyGrid
 
-const SR_LABEL_COLUMN = preload("res://Scenes/Character Planner Menu/sr_label_column.tscn")
-const INPUT_COLUMN = preload("res://Scenes/Character Planner Menu/Input Column.tscn")
+signal preset_changed(to: String)
+
+const COLUMNS := {
+	"SR": {
+		"LABEL": preload("res://Scenes/Character Planner Menu/sr_label_column.tscn"),
+		"INPUT": preload("res://Scenes/Character Planner Menu/sr_input_column.tscn")
+	}
+}
+
+@export_enum("None", "SR", "GI", "ZZZ") var preset: String = "None": set = set_preset
 
 func _ready() -> void:
-	for child in get_children():
-		child.queue_free()
-	add_star_rail_columns()
-
-# ====================================================== #
-#                        COLUMNS                         #
-# ====================================================== #
-func add_star_rail_columns():
-	
-	add_grid_column(SR_LABEL_COLUMN.instantiate())
-	add_star_rail_input_column()
 	return
 
-func add_star_rail_input_column():
-	var column = INPUT_COLUMN.instantiate()
-	column.add_input_lv_container("Expanded", "Character", 80)
-	column.add_input_lv_container("Simple", "BasicAtk", 6)
-	column.add_input_lv_container("Simple", "Skill", 12)
-	column.add_input_lv_container("Simple", "Ultimate", 12)
-	column.add_input_lv_container("Simple", "Talent", 12)
-	column.add_spacer(false)
-	column.add_spacer(false)
-	column.add_check_box("")
-	column.add_check_box("")
-	column.add_check_box("")
-	column.add_spacer(false)
-	column.add_check_box("")
-	column.add_check_box("")
-	column.add_check_box("")
-	column.add_check_box("")
-	column.add_spacer(false)
-	column.add_check_box("")
-	column.add_check_box("")
-	column.add_check_box("")
-	add_grid_column(column)
+# ====================================================== #
+#                        PRESETS                         #
+# ====================================================== #
+func set_preset(new_preset: String):
+	if not is_node_ready():
+		return
+	
+	for child in get_children():
+		child.queue_free()
+		grid_columns.erase(child)
+	if new_preset != "None":
+		assert(new_preset in COLUMNS)
+		var label_column = add_grid_column(COLUMNS[new_preset]["LABEL"].instantiate())
+		var input_column = add_grid_column(COLUMNS[new_preset]["INPUT"].instantiate())
+		# I'll need to access character resource data for Star rail here
+		# To get the traces data
+	
+	preset = new_preset
 	return
 
 # ====================================================== #

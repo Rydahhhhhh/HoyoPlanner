@@ -5,10 +5,10 @@ signal preset_changed(to: String)
 
 @export_enum("None", "Simple", "Expanded") var preset: String = "None": set = set_preset
 
-@onready var input_lv_container_row_1: HBoxContainer = %"InputLvContainer Row 1"
-@onready var input_lv_container_row_2: HBoxContainer = %"InputLvContainer Row 2"
-@onready var input_lv_container_row_3: HBoxContainer = %"InputLvContainer Row 3"
-@onready var input_lv_container_row_4: HBoxContainer = %"InputLvContainer Row 4"
+@onready var row_1: HBoxContainer = %"InputLvContainer Row 1"
+@onready var row_2: HBoxContainer = %"InputLvContainer Row 2"
+@onready var row_3: HBoxContainer = %"InputLvContainer Row 3"
+@onready var row_4: HBoxContainer = %"InputLvContainer Row 4"
 
 @onready var input_lv: LineEdit = %InputLv
 @onready var input_lv_add: Button = %"InputLv Add"
@@ -38,8 +38,10 @@ func switch_pressed(): pass
 #                        PRESETS                         #
 # ====================================================== #
 func set_preset(new_preset: String):
-	var preset_fn_name = "preset %s" 
+	if not is_node_ready():
+		return
 	
+	var preset_fn_name = "preset %s" 
 	preset_fn_name = preset_fn_name % new_preset.to_lower()
 	preset_fn_name = preset_fn_name.replace(" ", "_")
 	
@@ -60,46 +62,46 @@ func set_preset(new_preset: String):
 	return
 
 func preset_none():
-	input_lv_container_row_1.visible = false
-	input_lv_container_row_2.visible = false
-	input_lv_container_row_3.visible = false
-	input_lv_container_row_4.visible = false
+	row_1.set_deferred("visible", false)
+	row_2.set_deferred("visible", false)
+	row_3.set_deferred("visible", false)
+	row_4.set_deferred("visible", false)
 	
-	input_lv.visible = false
-	input_lv_add.visible = false
-	input_lv_sub.visible = false
-	input_lv_max.visible = false
-	input_lv_cycle.visible = false
-	input_lv_switch.visible = false
+	input_lv.set_deferred("visible", false)
+	input_lv_add.set_deferred("visible", false)
+	input_lv_sub.set_deferred("visible", false)
+	input_lv_max.set_deferred("visible", false)
+	input_lv_cycle.set_deferred("visible", false)
+	input_lv_switch.set_deferred("visible", false)
 	
-	input_lv.reparent(input_lv_container_row_1)
-	input_lv_add.reparent(input_lv_container_row_1)
-	input_lv_sub.reparent(input_lv_container_row_1)
-	input_lv_max.reparent(input_lv_container_row_1)
-	input_lv_cycle.reparent(input_lv_container_row_1)
-	input_lv_switch.reparent(input_lv_container_row_1)
+	input_lv.call_deferred("reparent", row_1)
+	input_lv_add.call_deferred("reparent", row_1)
+	input_lv_sub.call_deferred("reparent", row_1)
+	input_lv_max.call_deferred("reparent", row_1)
+	input_lv_cycle.call_deferred("reparent", row_1)
+	input_lv_switch.call_deferred("reparent", row_1)
 	return
 
 func preset_simple():
-	input_lv_container_row_1.visible = true
+	row_1.set_deferred("visible", true)
 	
-	input_lv.visible = true
-	input_lv_add.visible = true
-	input_lv_sub.visible = true
-	input_lv_max.visible = true
+	input_lv.set_deferred("visible", true)
+	input_lv_add.set_deferred("visible", true)
+	input_lv_sub.set_deferred("visible", true)
+	input_lv_max.set_deferred("visible", true)
 	return
 
 func preset_expanded():
-	input_lv_container_row_1.visible = true
-	input_lv_container_row_2.visible = true
+	row_1.set_deferred("visible", true)
+	row_2.set_deferred("visible", true)
 	
-	input_lv.visible = true
-	input_lv_max.visible = true
-	input_lv_cycle.visible = true
-	input_lv_switch.visible = true
+	input_lv.set_deferred("visible", true)
+	input_lv_max.set_deferred("visible", true)
+	input_lv_cycle.set_deferred("visible", true)
+	input_lv_switch.set_deferred("visible", true)
 	
-	input_lv_max.reparent(input_lv_container_row_2)
-	input_lv_cycle.reparent(input_lv_container_row_2)
+	input_lv_cycle.call_deferred("reparent", row_2)
+	input_lv_max.call_deferred("reparent", row_2)
 	return
 
 # ====================================================== #
