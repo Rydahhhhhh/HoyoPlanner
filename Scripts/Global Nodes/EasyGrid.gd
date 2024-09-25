@@ -1,11 +1,7 @@
 @tool
 class_name EasyGrid extends HBoxContainer
 
-var row_minh = {}
-
-@onready var label_columns: VBoxContainer = $"Label Columns"
-
-@onready var grid_columns = [label_columns]
+var grid_columns = []
 
 func _get_configuration_warnings() -> PackedStringArray:
 	for node in grid_columns:
@@ -35,7 +31,7 @@ func re_sort_children():
 	if not is_config_correct():
 		return
 	
-	row_minh = {}
+	var row_minh = {}
 	
 	for node: VBoxContainer in grid_columns:
 		for i in node.get_child_count():
@@ -48,6 +44,11 @@ func re_sort_children():
 
 func add_grid_column(node: VBoxContainer):
 	grid_columns.append(node)
-	add_child(node, true)
-	node.owner = self
+	if node.get_parent() != self:
+		add_child(node, true)
+		node.owner = self
 	queue_sort()
+
+# ====================================================== #
+#                      END OF FILE                       #
+# ====================================================== #

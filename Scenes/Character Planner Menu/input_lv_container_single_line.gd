@@ -20,6 +20,7 @@ func _notification(what: int) -> void:
 func add_pressed(): input_lv.lv += 1
 func sub_pressed(): input_lv.lv -= 1
 func max_pressed(): input_lv.lv = input_lv.max_lv
+
 # ====================================================== #
 #                      END OF FILE                       #
 # ====================================================== #

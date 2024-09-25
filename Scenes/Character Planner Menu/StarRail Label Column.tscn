@@ -1,0 +1,247 @@
+[gd_scene load_steps=4 format=3 uid="uid://dlh4aekng5g22"]
+
+[sub_resource type="SystemFont" id="SystemFont_xckqa"]
+font_names = PackedStringArray("Segoe UI")
+font_weight = 600
+subpixel_positioning = 0
+
+[sub_resource type="SystemFont" id="SystemFont_ykitf"]
+font_names = PackedStringArray("Segoe UI")
+subpixel_positioning = 0
+
+[sub_resource type="SystemFont" id="SystemFont_5wfhp"]
+font_names = PackedStringArray("Segoe UI")
+font_weight = 600
+subpixel_positioning = 0
+
+[node name="StarRail Label Columns" type="VBoxContainer"]
+metadata/_edit_lock_ = true
+
+[node name="Level Row Label" type="Label" parent="."]
+custom_minimum_size = Vector2(0, 66)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = SubResource("SystemFont_xckqa")
+text = "LEVEL"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BasicAttack Row Label" type="Label" parent="."]
+custom_minimum_size = Vector2(0, 31)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = SubResource("SystemFont_xckqa")
+text = "BASIC ATTACK"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Skill Row Label" type="Label" parent="."]
+custom_minimum_size = Vector2(0, 31)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = SubResource("SystemFont_xckqa")
+text = "SKILL"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Ultimate Row Label" type="Label" parent="."]
+custom_minimum_size = Vector2(0, 31)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = SubResource("SystemFont_xckqa")
+text = "ULTIMATE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Talent Row Label" type="Label" parent="."]
+custom_minimum_size = Vector2(0, 31)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = SubResource("SystemFont_xckqa")
+text = "TALENT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Minor Traces" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(0, 23)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_fonts/normal_font = SubResource("SystemFont_ykitf")
+theme_override_fonts/bold_font = SubResource("SystemFont_5wfhp")
+bbcode_enabled = true
+text = "Minor Traces
+"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Passive 1" type="RichTextLabel" parent="."]
+clip_contents = false
+custom_minimum_size = Vector2(0, 23)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_fonts/normal_font = SubResource("SystemFont_ykitf")
+theme_override_fonts/bold_font = SubResource("SystemFont_5wfhp")
+bbcode_enabled = true
+text = "[b]Revival"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="SubStat1" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(117, 24)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_fonts/normal_font = SubResource("SystemFont_ykitf")
+theme_override_fonts/bold_font = SubResource("SystemFont_5wfhp")
+bbcode_enabled = true
+text = "[right]Effect RES [color=efdb32]+4%"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="SubStat2" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(84, 24)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_fonts/normal_font = SubResource("SystemFont_ykitf")
+theme_override_fonts/bold_font = SubResource("SystemFont_5wfhp")
+bbcode_enabled = true
+text = "[right]ATK [color=efdb32]+4%"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="SubStat3" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(88, 24)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_fonts/normal_font = SubResource("SystemFont_ykitf")
+theme_override_fonts/bold_font = SubResource("SystemFont_5wfhp")
+bbcode_enabled = true
+text = "[right]HP [color=efdb32]+6%"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Passive2" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(0, 23)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_fonts/normal_font = SubResource("SystemFont_ykitf")
+theme_override_fonts/bold_font = SubResource("SystemFont_5wfhp")
+bbcode_enabled = true
+text = "[b]Repel"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="SubStat4" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(68, 24)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_fonts/normal_font = SubResource("SystemFont_ykitf")
+theme_override_fonts/bold_font = SubResource("SystemFont_5wfhp")
+bbcode_enabled = true
+text = "[right]HP [color=efdb32]+6%"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="SubStat5" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(127, 24)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_fonts/normal_font = SubResource("SystemFont_ykitf")
+theme_override_fonts/bold_font = SubResource("SystemFont_5wfhp")
+bbcode_enabled = true
+text = "[right]Effect RES [color=efdb32]+4%"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="SubStat6" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(94, 24)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_fonts/normal_font = SubResource("SystemFont_ykitf")
+theme_override_fonts/bold_font = SubResource("SystemFont_5wfhp")
+bbcode_enabled = true
+text = "[right]ATK [color=efdb32]+4%"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="SubStat7" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_fonts/normal_font = SubResource("SystemFont_ykitf")
+theme_override_fonts/bold_font = SubResource("SystemFont_5wfhp")
+bbcode_enabled = true
+text = "[right]ATK [color=efdb32]+4%"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Passive3" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(0, 23)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_fonts/normal_font = SubResource("SystemFont_ykitf")
+theme_override_fonts/bold_font = SubResource("SystemFont_5wfhp")
+bbcode_enabled = true
+text = "[b]Endurance"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="SubStat8" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(74, 24)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_fonts/normal_font = SubResource("SystemFont_ykitf")
+theme_override_fonts/bold_font = SubResource("SystemFont_5wfhp")
+bbcode_enabled = true
+text = "[right]ATK [color=efdb32]+4%"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="SubStat9" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(127, 24)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_fonts/normal_font = SubResource("SystemFont_ykitf")
+theme_override_fonts/bold_font = SubResource("SystemFont_5wfhp")
+bbcode_enabled = true
+text = "[right]Effect RES [color=efdb32]+4%"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="SubStat10" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(94, 24)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_fonts/normal_font = SubResource("SystemFont_ykitf")
+theme_override_fonts/bold_font = SubResource("SystemFont_5wfhp")
+bbcode_enabled = true
+text = "[right]ATK [color=efdb32]+4%"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
