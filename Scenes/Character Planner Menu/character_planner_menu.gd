@@ -3,14 +3,31 @@ extends EasyGrid
 
 const INPUT_COLUMN = preload("res://Scenes/Character Planner Menu/Input Column.tscn")
 
-@export var test: bool:
-	set(v):
-		_ready()
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	add_grid_column(INPUT_COLUMN.instantiate())
+	add_star_rail_input_column()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+# ========================================= #
+#                  COLUMNS                  #
+# ========================================= #
+func add_star_rail_input_column():
+	var column = INPUT_COLUMN.instantiate()
+	column.add_input_lv_container("BasicAtk", 6)
+	column.add_input_lv_container("Skill", 12)
+	column.add_input_lv_container("Ultimate", 12)
+	column.add_input_lv_container("Talent", 12)
+	column.add_spacer(false)
+	column.add_spacer(false)
+	column.add_check_box("")
+	column.add_check_box("")
+	column.add_check_box("")
+	column.add_spacer(false)
+	column.add_check_box("")
+	column.add_check_box("")
+	column.add_check_box("")
+	column.add_check_box("")
+	column.add_spacer(false)
+	column.add_check_box("")
+	column.add_check_box("")
+	column.add_check_box("")
+	add_grid_column(column)
+	return
