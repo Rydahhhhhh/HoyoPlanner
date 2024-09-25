@@ -10,6 +10,8 @@ script = ExtResource("1_cs0l6")
 
 [node name="InputLv" parent="." instance=ExtResource("2_wxdjk")]
 layout_mode = 2
+caret_column = 1
+max_lv = 10
 
 [node name="InputLv Add" type="Button" parent="."]
 custom_minimum_size = Vector2(27, 0)

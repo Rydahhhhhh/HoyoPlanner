@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://cw8toj2wvpp2p"]
+[gd_scene load_steps=6 format=3 uid="uid://cw8toj2wvpp2p"]
 
 [ext_resource type="Script" path="res://Scenes/Character Planner Menu/character_planner_menu.gd" id="1_ckroi"]
-[ext_resource type="PackedScene" uid="uid://dlh4aekng5g22" path="res://Scenes/Character Planner Menu/StarRail Label Column.tscn" id="2_7pe5t"]
+[ext_resource type="PackedScene" uid="uid://dlh4aekng5g22" path="res://Scenes/Character Planner Menu/sr_label_column.tscn" id="2_7pe5t"]
 [ext_resource type="PackedScene" uid="uid://by4fblho7gyhf" path="res://Scenes/Character Planner Menu/Input Column.tscn" id="2_a14fo"]
 [ext_resource type="Script" path="res://Scenes/Character Planner Menu/input_column.gd" id="3_1sygw"]
+
+[sub_resource type="GDScript" id="GDScript_ak3ms"]
 
 [node name="Character Planner Menu" type="HBoxContainer"]
 offset_left = 494.0
@@ -14,6 +16,7 @@ script = ExtResource("1_ckroi")
 
 [node name="StarRail Label Columns" type="VBoxContainer" parent="." instance=ExtResource("2_7pe5t")]
 layout_mode = 2
+script = SubResource("GDScript_ak3ms")
 metadata/_edit_lock_ = true
 
 [node name="Input Column2" type="VBoxContainer" parent="." instance=ExtResource("2_a14fo")]

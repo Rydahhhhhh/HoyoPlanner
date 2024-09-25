@@ -1,8 +1,7 @@
 @tool
 extends EasyGrid
 
-const StarRailLabelColumn = preload("res://Scenes/Character Planner Menu/star_rail_label_column.gd")
-const STAR_RAIL_LABEL_COLUMN = preload("res://Scenes/Character Planner Menu/StarRail Label Column.tscn")
+const SR_LABEL_COLUMN = preload("res://Scenes/Character Planner Menu/sr_label_column.tscn")
 const INPUT_COLUMN = preload("res://Scenes/Character Planner Menu/Input Column.tscn")
 
 func _ready() -> void:
@@ -14,9 +13,8 @@ func _ready() -> void:
 #                        COLUMNS                         #
 # ====================================================== #
 func add_star_rail_columns():
-	var column = StarRailLabelColumn.new()
 	
-	add_grid_column(STAR_RAIL_LABEL_COLUMN.instantiate())
+	add_grid_column(SR_LABEL_COLUMN.instantiate())
 	add_star_rail_input_column()
 	return
 
