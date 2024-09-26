@@ -49,14 +49,16 @@ func set_preset(new_preset: String):
 		columns_changed.emit()
 		
 	preset = new_preset
+	add_input_column()
 	return
 
 func add_input_column():
 	if preset == "None":
 		return
 	
+	
 	var new_column = add_grid_column(COLUMNS[preset]["INPUT"].instantiate())
-	move_child(new_column, -2)
+	#move_child(new_column, -2)
 	
 	columns_changed.emit()
 	return

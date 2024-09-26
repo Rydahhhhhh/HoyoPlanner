@@ -36,13 +36,15 @@ func add_input_lv_container(preset: String, name_as: String, max_lv: int):
 	
 	print(input_lv_container.max_lv)
 	
-	input_lv_container.input_lv.max_lv = max_lv
-	input_lv_container.set_preset(preset)
+	input_lv_container.max_lv = max_lv
+	input_lv_container.preset = preset
 	
+	# Needs some work tbh
 	var nodes_in_row = input_nodes[input_lv_container.name]
-	if input_lv_container != nodes_in_row[-1]:
-		var next_node = nodes_in_row[-1].input_lv
-		next_node.input_lv.lv_changed.connect(input_lv_container.set_min_lv)
+	if len(nodes_in_row) >= 2:
+		assert (nodes_in_row[-1] == input_lv_container)
+		nodes_in_row[-2].lv_changed.connect(input_lv_container.set_min_lv)
+		input_lv_container.min_lv = nodes_in_row[-2].lv
 	
 	# Return for chaining if needed
 	return input_lv_container
@@ -59,8 +61,8 @@ func add_check_box(name_as: String):
 # ====================================================== #
 #                      ROW EDITING                       #
 # ====================================================== #
-static func test():
-	pass
+static func get_row_siblings(input_node):
+	return input_nodes[input_node.name]
 
 # ====================================================== #
 #                      END OF FILE                       #

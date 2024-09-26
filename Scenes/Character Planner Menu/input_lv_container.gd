@@ -3,6 +3,8 @@ extends VBoxContainer
 
 signal preset_changed(to: String)
 
+const input_lv_properties = ["lv", "min_lv", "max_lv", "lv_changed", "min_lv_changed", "max_lv_changed", "set_lv", "set_min_lv", "set_max_lv"]
+
 @export_custom(PROPERTY_HINT_ENUM, "None, Simple, Expanded", PROPERTY_USAGE_NO_INSTANCE_STATE+4) var preset: String = "None": set = set_preset
 
 @onready var row_1: HBoxContainer = %"InputLvContainer Row 1"
@@ -33,13 +35,14 @@ func _notification(what: int) -> void:
 			input_lv_sub.custom_minimum_size.x = add_sub_btn_size
 
 func _set(property: StringName, value: Variant) -> bool:
-	if is_node_ready() and property in ["lv", "min_lv", "max_lv", "lv_changed", "min_lv_changed", "max_lv_changed"]:
+	
+	if is_node_ready() and property in input_lv_properties:
 		input_lv.set(property, value)
 		return true
 	return false
 
 func _get(property: StringName) -> Variant:
-	if is_node_ready() and property in ["lv", "min_lv", "max_lv", "lv_changed", "min_lv_changed", "max_lv_changed"]:
+	if is_node_ready() and property in input_lv_properties:
 		return input_lv.get(property)
 	return
 
