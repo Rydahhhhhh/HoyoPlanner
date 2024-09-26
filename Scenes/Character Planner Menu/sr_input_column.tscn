@@ -1,6 +1,88 @@
-[gd_scene load_steps=2 format=3 uid="uid://ceqf0sud2bgtn"]
+[gd_scene load_steps=4 format=3 uid="uid://ceqf0sud2bgtn"]
 
 [ext_resource type="Script" path="res://Scenes/Character Planner Menu/sr_input_column.gd" id="1_clmhy"]
+[ext_resource type="PackedScene" uid="uid://cr6wfurweno23" path="res://Scenes/Character Planner Menu/InputLv Container.tscn" id="2_665ik"]
+[ext_resource type="Script" path="res://Scenes/Character Planner Menu/input_lv_container.gd" id="3_j4bba"]
 
 [node name="SrInputColumn" type="VBoxContainer"]
 script = ExtResource("1_clmhy")
+
+[node name="InputLv Container Character2" type="VBoxContainer" parent="." instance=ExtResource("2_665ik")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("3_j4bba")
+preset = "Expanded"
+metadata/_edit_lock_ = true
+
+[node name="InputLv Container BasicAtk2" type="VBoxContainer" parent="." instance=ExtResource("2_665ik")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("3_j4bba")
+preset = "Simple"
+metadata/_edit_lock_ = true
+
+[node name="InputLv Container Skill2" type="VBoxContainer" parent="." instance=ExtResource("2_665ik")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("3_j4bba")
+preset = "Simple"
+metadata/_edit_lock_ = true
+
+[node name="InputLv Container Ultimate2" type="VBoxContainer" parent="." instance=ExtResource("2_665ik")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("3_j4bba")
+preset = "Simple"
+metadata/_edit_lock_ = true
+
+[node name="InputLv Container Talent2" type="VBoxContainer" parent="." instance=ExtResource("2_665ik")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("3_j4bba")
+preset = "Simple"
+metadata/_edit_lock_ = true
+
+[node name="CheckBox11" type="CheckBox" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="CheckBox12" type="CheckBox" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="CheckBox13" type="CheckBox" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="CheckBox14" type="CheckBox" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="CheckBox15" type="CheckBox" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="CheckBox16" type="CheckBox" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="CheckBox17" type="CheckBox" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="CheckBox18" type="CheckBox" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="CheckBox19" type="CheckBox" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="CheckBox20" type="CheckBox" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4

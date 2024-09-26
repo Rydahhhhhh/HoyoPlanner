@@ -50,6 +50,10 @@ func add_grid_column(node: VBoxContainer):
 	queue_sort()
 	return node
 
+func remove_grid_column(node: VBoxContainer):
+	node.queue_free()
+	grid_columns.erase(node)
+
 # ====================================================== #
 #                      END OF FILE                       #
 # ====================================================== #

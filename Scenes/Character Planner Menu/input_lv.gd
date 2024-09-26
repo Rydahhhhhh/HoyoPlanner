@@ -25,42 +25,45 @@ func set_lv(new_lv):
 	# I want setting to null to have the empty text 
 	# this is impossible if it's typed
 	
-	if new_lv is int:
-		# Ensures new_lv is within the range
-		if new_lv < min_lv:
+	# Only updates the internal lv once you're done typing
+	if has_focus():
+		if new_lv is int:
+			text = str(new_lv)
+		else:
+			assert(new_lv == null)
 			new_lv = min_lv
-		elif new_lv > max_lv:
-			new_lv = max_lv
-		text = str(new_lv)
-	else:
-		assert(new_lv == null)
-		new_lv = min_lv
-		text = ""
+			text = ""
+		
+		text = "" if new_lv == null else str(new_lv)
+		queued_lv = new_lv
+		return
 	
+	assert(new_lv is int)
+	
+	# Ensures new_lv is within the range
+	if new_lv < min_lv:
+		new_lv = min_lv
+	elif new_lv > max_lv:
+		new_lv = max_lv
+	text = str(new_lv)
+
 	# Setting text on a LineEdit makes the caret_column = 0
 	caret_column = len(text)
 	
-	# Only updates the internal lv once you're done typing
-	if has_focus():
-		queued_lv = new_lv
-	else:
-		lv = new_lv
-		lv_changed.emit(lv)
+	
+	lv = new_lv
+	lv_changed.emit(lv)
 	return
 
 func set_min_lv(new_min_lv):
-	if min_lv != new_min_lv:
+	if min_lv != new_min_lv and new_min_lv < max_lv:
 		min_lv = new_min_lv
 		min_lv_changed.emit(new_min_lv)
-		if min_lv > max_lv:
-			max_lv = min_lv
 
 func set_max_lv(new_max_lv):
-	if max_lv != new_max_lv:
+	if max_lv != new_max_lv and new_max_lv > min_lv:
 		max_lv = new_max_lv
 		max_lv_changed.emit(new_max_lv)
-		if max_lv < min_lv:
-			min_lv = max_lv
 
 # ====================================================== #
 #                   SIGNAL CONNECTIONS                   #

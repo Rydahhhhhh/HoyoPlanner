@@ -3,7 +3,7 @@ extends VBoxContainer
 
 signal preset_changed(to: String)
 
-@export_enum("None", "Simple", "Expanded") var preset: String = "None": set = set_preset
+@export_custom(PROPERTY_HINT_ENUM, "None, Simple, Expanded", PROPERTY_USAGE_NO_INSTANCE_STATE+4) var preset: String = "None": set = set_preset
 
 @onready var row_1: HBoxContainer = %"InputLvContainer Row 1"
 @onready var row_2: HBoxContainer = %"InputLvContainer Row 2"
@@ -17,6 +17,13 @@ signal preset_changed(to: String)
 @onready var input_lv_cycle: Button = %"InputLv Cycle"
 @onready var input_lv_switch: CheckButton = %"InputLv Switch"
 
+# ====================================================== #
+#                       OVERRIDES                        #
+# ====================================================== #
+func _ready() -> void:
+	print(self.max_lv)
+	return
+
 func _notification(what: int) -> void:
 	match what:
 		NOTIFICATION_SORT_CHILDREN:
@@ -24,6 +31,17 @@ func _notification(what: int) -> void:
 			var add_sub_btn_size = max(input_lv_add.get_minimum_size().x, input_lv_sub.get_minimum_size().x)
 			input_lv_add.custom_minimum_size.x = add_sub_btn_size
 			input_lv_sub.custom_minimum_size.x = add_sub_btn_size
+
+func _set(property: StringName, value: Variant) -> bool:
+	if is_node_ready() and property in ["lv", "min_lv", "max_lv", "lv_changed", "min_lv_changed", "max_lv_changed"]:
+		input_lv.set(property, value)
+		return true
+	return false
+
+func _get(property: StringName) -> Variant:
+	if is_node_ready() and property in ["lv", "min_lv", "max_lv", "lv_changed", "min_lv_changed", "max_lv_changed"]:
+		return input_lv.get(property)
+	return
 
 # ====================================================== #
 #                   SIGNAL CONNECTIONS                   #
