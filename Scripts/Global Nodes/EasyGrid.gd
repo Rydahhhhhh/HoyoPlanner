@@ -3,11 +3,12 @@ class_name EasyGrid extends HBoxContainer
 
 ## A container that organizes its children into a pseudo-grid layout.
 ##
-## A variant of HBoxContainer that organizes its children into a pseudo-grid layout. VBoxContainer children can be treated as "columns". Each column raises its child nodes to align with the highest child in any other column in the same row, creating a grid-like structure without explicitly defined rows.
+## A variant of [HBoxContainer] that organizes its children into a pseudo-grid layout. [VBoxContainer] children can be treated as "columns". Each column raises its child nodes to align with the highest child in any other column in the same row, creating a grid-like structure without explicitly defined rows.
 ## 
 ## @experimental
 
-var grid_columns: Array[VBoxContainer] = []
+## Array storing children [VBoxContainer] to be treated as columns.
+var grid_columns: Array[VBoxContainer] = [] 
 
 # ====================================================== #
 #                       OVERRIDES                        #
@@ -41,6 +42,7 @@ func _notification(what: int) -> void:
 # ====================================================== #
 #                        METHODS                         #
 # ====================================================== #
+## Makes [param column] be treated as grid column, and forces it to become a child of this node, then re-sorts children.
 func add_grid_column(column: VBoxContainer) -> VBoxContainer:
 	if column not in grid_columns:
 		grid_columns.append(column)
@@ -53,14 +55,16 @@ func add_grid_column(column: VBoxContainer) -> VBoxContainer:
 		column.reparent(self)
 	
 	queue_sort()
-	# Return for chaining
 	return column
 
-func remove_grid_column(column: VBoxContainer) -> void:
-	# You can just free the node and it'll be handled fine
-	# but having a method that explicitly removes a column makes sense
-	column.queue_free()
+
+## Stops treating [param column] as a grid column.[br]
+## Set [param free] to [code]true[/code] if you wish for [param column] to be freed at the end of the current frame.
+func remove_grid_column(column: VBoxContainer, free: bool = false) -> void:
+	if free:
+		column.queue_free()
 	grid_columns.erase(column)
+	queue_sort()
 	return
 
 # ====================================================== #
