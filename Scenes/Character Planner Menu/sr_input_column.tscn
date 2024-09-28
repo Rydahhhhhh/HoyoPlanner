@@ -1,25 +1,70 @@
 [gd_scene load_steps=3 format=3 uid="uid://ceqf0sud2bgtn"]
 
-[ext_resource type="Script" path="res://Scenes/Character Planner Menu/sr_input_column.gd" id="1_clmhy"]
+[ext_resource type="Script" path="res://Scenes/Character Planner Menu/input_column.gd" id="1_3yg1o"]
 [ext_resource type="PackedScene" uid="uid://cr6wfurweno23" path="res://Scenes/Character Planner Menu/InputCell.tscn" id="2_665ik"]
 
 [node name="SrInputColumn" type="VBoxContainer"]
 offset_right = 174.0
 offset_bottom = 602.0
-script = ExtResource("1_clmhy")
+script = ExtResource("1_3yg1o")
 
 [node name="InputCell Character" parent="." instance=ExtResource("2_665ik")]
 layout_mode = 2
+preset = 2
+metadata/_edit_pinned_properties_ = [&"preset"]
 
 [node name="InputCell Basic Attack" parent="." instance=ExtResource("2_665ik")]
 layout_mode = 2
+preset = 1
+metadata/_edit_pinned_properties_ = [&"preset"]
 
-[node name="InputCell" parent="." instance=ExtResource("2_665ik")]
+[node name="InputCell Skill" parent="." instance=ExtResource("2_665ik")]
 layout_mode = 2
+preset = 1
+metadata/_edit_pinned_properties_ = [&"preset"]
+
+[node name="InputCell Ultimate" parent="." instance=ExtResource("2_665ik")]
+layout_mode = 2
+preset = 1
+metadata/_edit_pinned_properties_ = [&"preset"]
+
+[node name="InputCell Talent" parent="." instance=ExtResource("2_665ik")]
+layout_mode = 2
+preset = 1
+metadata/_edit_pinned_properties_ = [&"preset"]
+
+[node name="Spacer" type="Control" parent="."]
+editor_description = "Input Column scenes will be children of the \"EasyGrid\" container. See it's documentation."
+layout_mode = 2
+
+[node name="InputCell Trace Passive" parent="." instance=ExtResource("2_665ik")]
+layout_mode = 2
+size_flags_horizontal = 4
+preset = 3
+metadata/_edit_pinned_properties_ = [&"preset"]
 
 [connection signal="focus_exited" from="InputCell Character/InputCellRow/Input Int" to="InputCell Character/InputCellRow/Input Int" method="_on_focus_exited"]
 [connection signal="text_changed" from="InputCell Character/InputCellRow/Input Int" to="InputCell Character/InputCellRow/Input Int" method="text_input_changed"]
+[connection signal="pressed" from="InputCell Character/InputCellRow/Input Switch" to="InputCell Character" method="switch_pressed"]
+[connection signal="pressed" from="InputCell Character/InputCellRow2/Input Cycle" to="InputCell Character" method="cycle_pressed"]
+[connection signal="pressed" from="InputCell Character/InputCellRow2/Input Max" to="InputCell Character" method="max_pressed"]
 [connection signal="focus_exited" from="InputCell Basic Attack/InputCellRow/Input Int" to="InputCell Basic Attack/InputCellRow/Input Int" method="_on_focus_exited"]
 [connection signal="text_changed" from="InputCell Basic Attack/InputCellRow/Input Int" to="InputCell Basic Attack/InputCellRow/Input Int" method="text_input_changed"]
-[connection signal="focus_exited" from="InputCell/InputCellRow/Input Int" to="InputCell/InputCellRow/Input Int" method="_on_focus_exited"]
-[connection signal="text_changed" from="InputCell/InputCellRow/Input Int" to="InputCell/InputCellRow/Input Int" method="text_input_changed"]
+[connection signal="pressed" from="InputCell Basic Attack/InputCellRow/Input Add" to="InputCell Basic Attack" method="add_pressed"]
+[connection signal="pressed" from="InputCell Basic Attack/InputCellRow/Input Sub" to="InputCell Basic Attack" method="sub_pressed"]
+[connection signal="pressed" from="InputCell Basic Attack/InputCellRow/Input Max" to="InputCell Basic Attack" method="max_pressed"]
+[connection signal="focus_exited" from="InputCell Skill/InputCellRow/Input Int" to="InputCell Skill/InputCellRow/Input Int" method="_on_focus_exited"]
+[connection signal="text_changed" from="InputCell Skill/InputCellRow/Input Int" to="InputCell Skill/InputCellRow/Input Int" method="text_input_changed"]
+[connection signal="pressed" from="InputCell Skill/InputCellRow/Input Add" to="InputCell Skill" method="add_pressed"]
+[connection signal="pressed" from="InputCell Skill/InputCellRow/Input Sub" to="InputCell Skill" method="sub_pressed"]
+[connection signal="pressed" from="InputCell Skill/InputCellRow/Input Max" to="InputCell Skill" method="max_pressed"]
+[connection signal="focus_exited" from="InputCell Ultimate/InputCellRow/Input Int" to="InputCell Ultimate/InputCellRow/Input Int" method="_on_focus_exited"]
+[connection signal="text_changed" from="InputCell Ultimate/InputCellRow/Input Int" to="InputCell Ultimate/InputCellRow/Input Int" method="text_input_changed"]
+[connection signal="pressed" from="InputCell Ultimate/InputCellRow/Input Add" to="InputCell Ultimate" method="add_pressed"]
+[connection signal="pressed" from="InputCell Ultimate/InputCellRow/Input Sub" to="InputCell Ultimate" method="sub_pressed"]
+[connection signal="pressed" from="InputCell Ultimate/InputCellRow/Input Max" to="InputCell Ultimate" method="max_pressed"]
+[connection signal="focus_exited" from="InputCell Talent/InputCellRow/Input Int" to="InputCell Talent/InputCellRow/Input Int" method="_on_focus_exited"]
+[connection signal="text_changed" from="InputCell Talent/InputCellRow/Input Int" to="InputCell Talent/InputCellRow/Input Int" method="text_input_changed"]
+[connection signal="pressed" from="InputCell Talent/InputCellRow/Input Add" to="InputCell Talent" method="add_pressed"]
+[connection signal="pressed" from="InputCell Talent/InputCellRow/Input Sub" to="InputCell Talent" method="sub_pressed"]
+[connection signal="pressed" from="InputCell Talent/InputCellRow/Input Max" to="InputCell Talent" method="max_pressed"]
