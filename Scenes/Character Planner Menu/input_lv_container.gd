@@ -1,57 +1,66 @@
 @tool
 extends VBoxContainer
 
+signal value_changed(to)
 signal preset_changed(to: String)
-
 const input_lv_properties = ["lv", "min_lv", "max_lv", "lv_changed", "min_lv_changed", "max_lv_changed", "set_lv", "set_min_lv", "set_max_lv"]
 
-@export_custom(PROPERTY_HINT_ENUM, "None, Simple, Expanded", PROPERTY_USAGE_NO_INSTANCE_STATE+4) var preset: String = "None": set = set_preset
+@export_custom(PROPERTY_HINT_ENUM, "None,Simple,Expanded,CheckBox", PROPERTY_USAGE_NO_INSTANCE_STATE+4) var preset: String = "None": set = set_preset
+@onready var hidden_row: Control = $"Hidden Row"
+@onready var rows = []
 
-@onready var row_1: HBoxContainer = %"InputLvContainer Row 1"
-@onready var row_2: HBoxContainer = %"InputLvContainer Row 2"
-@onready var row_3: HBoxContainer = %"InputLvContainer Row 3"
-@onready var row_4: HBoxContainer = %"InputLvContainer Row 4"
+@onready var input_int: LineEdit = %"Input Int"
+@onready var input_add: Button = %"Input Add"
+@onready var input_sub: Button = %"Input Sub"
+@onready var input_max: Button = %"Input Max"
+@onready var input_cycle: Button = %"Input Cycle"
+@onready var input_switch: CheckButton = %"Input Switch"
+@onready var input_check_box: CheckBox = %"Input CheckBox"
 
-@onready var input_lv: LineEdit = %InputLv
-@onready var input_lv_add: Button = %"InputLv Add"
-@onready var input_lv_sub: Button = %"InputLv Sub"
-@onready var input_lv_max: Button = %"InputLv Max"
-@onready var input_lv_cycle: Button = %"InputLv Cycle"
-@onready var input_lv_switch: CheckButton = %"InputLv Switch"
+var main_input = null
+var _preset = null
 
 # ====================================================== #
 #                       OVERRIDES                        #
 # ====================================================== #
 func _ready() -> void:
-	print(self.max_lv)
-	return
+	if not Engine.is_editor_hint():
+		preset_changed.connect(
+			func(pr): 
+				if pr != "None": 
+					hidden_row.queue_free()
+				)
 
 func _notification(what: int) -> void:
 	match what:
 		NOTIFICATION_SORT_CHILDREN:
 			# Ensures the +1 and -1 Buttons have the same width
-			var add_sub_btn_size = max(input_lv_add.get_minimum_size().x, input_lv_sub.get_minimum_size().x)
-			input_lv_add.custom_minimum_size.x = add_sub_btn_size
-			input_lv_sub.custom_minimum_size.x = add_sub_btn_size
+			var add_sub_btn_size = max(input_add.get_minimum_size().x, input_sub.get_minimum_size().x)
+			input_add.custom_minimum_size.x = add_sub_btn_size
+			input_sub.custom_minimum_size.x = add_sub_btn_size
+		NOTIFICATION_EDITOR_PRE_SAVE:
+			_preset = preset
+			preset = "None"
+		NOTIFICATION_EDITOR_POST_SAVE:
+			preset = _preset
 
 func _set(property: StringName, value: Variant) -> bool:
-	
 	if is_node_ready() and property in input_lv_properties:
-		input_lv.set(property, value)
+		input_int.set(property, value)
 		return true
 	return false
 
 func _get(property: StringName) -> Variant:
 	if is_node_ready() and property in input_lv_properties:
-		return input_lv.get(property)
+		return input_int.get(property)
 	return
 
 # ====================================================== #
 #                   SIGNAL CONNECTIONS                   #
 # ====================================================== #
-func add_pressed(): input_lv.lv += 1
-func sub_pressed(): input_lv.lv -= 1
-func max_pressed(): input_lv.lv = input_lv.max_lv
+func add_pressed(): input_int.lv += 1
+func sub_pressed(): input_int.lv -= 1
+func max_pressed(): input_int.lv = input_int.max_lv
 func cycle_pressed(): pass
 func switch_pressed(): pass
 
@@ -82,49 +91,39 @@ func set_preset(new_preset: String):
 		push_warning("No such preset %s" % new_preset)
 	return
 
+func get_row(n: int) -> HBoxContainer:
+	while len(rows) < (n+1):
+		var new_row = HBoxContainer.new()
+		new_row.name = "InputCellRow"
+		add_child.call_deferred(new_row, true)
+
+		rows.append(new_row)
+	return rows[n]
+
+func add_to_row(row:int, nodes: Array[Node]):
+	for node in nodes:
+		get_row(row).add_child.call_deferred(node.duplicate())
+	return
+
 func preset_none():
-	row_1.set_deferred("visible", false)
-	row_2.set_deferred("visible", false)
-	row_3.set_deferred("visible", false)
-	row_4.set_deferred("visible", false)
-	
-	input_lv.set_deferred("visible", false)
-	input_lv_add.set_deferred("visible", false)
-	input_lv_sub.set_deferred("visible", false)
-	input_lv_max.set_deferred("visible", false)
-	input_lv_cycle.set_deferred("visible", false)
-	input_lv_switch.set_deferred("visible", false)
-	
-	input_lv.call_deferred("reparent", row_1)
-	input_lv_add.call_deferred("reparent", row_1)
-	input_lv_sub.call_deferred("reparent", row_1)
-	input_lv_max.call_deferred("reparent", row_1)
-	input_lv_cycle.call_deferred("reparent", row_1)
-	input_lv_switch.call_deferred("reparent", row_1)
+	for row in rows.duplicate():
+		row.queue_free()
+		rows.erase(row)
 	return
 
 func preset_simple():
-	row_1.set_deferred("visible", true)
-	
-	input_lv.set_deferred("visible", true)
-	input_lv_add.set_deferred("visible", true)
-	input_lv_sub.set_deferred("visible", true)
-	input_lv_max.set_deferred("visible", true)
+	add_to_row(0, [input_int, input_add, input_sub, input_max])
 	return
 
 func preset_expanded():
-	row_1.set_deferred("visible", true)
-	row_2.set_deferred("visible", true)
-	
-	input_lv.set_deferred("visible", true)
-	input_lv_max.set_deferred("visible", true)
-	input_lv_cycle.set_deferred("visible", true)
-	input_lv_switch.set_deferred("visible", true)
-	
-	input_lv_cycle.call_deferred("reparent", row_2)
-	input_lv_max.call_deferred("reparent", row_2)
+	add_to_row(0, [input_int, input_switch])
+	add_to_row(1, [input_cycle, input_max])
 	return
 
+func preset_checkbox():
+	add_to_row(0, [input_check_box])
+	return
+	
 # ====================================================== #
 #                      END OF FILE                       #
 # ====================================================== #

@@ -5,26 +5,26 @@ func _ready() -> void:
 	for child in get_children().duplicate():
 		child.queue_free()
 
-	add_input_lv_container("Expanded", "Character", 80)
-	add_input_lv_container("Simple", "BasicAtk", 6)
-	add_input_lv_container("Simple", "Skill", 12)
-	add_input_lv_container("Simple", "Ultimate", 12)
-	add_input_lv_container("Simple", "Talent", 12)
+	add_input_lv_container("Expanded", 80).name = "Character"
+	add_input_lv_container("Simple", 6).name = "BasicAtk"
+	add_input_lv_container("Simple", 12).name = "Skill"
+	add_input_lv_container("Simple", 12).name = "Ultimate"
+	add_input_lv_container("Simple", 12).name = "Talent"
 	
 	add_spacer(false)
-	add_check_box("")
-	add_check_box("")
-	add_check_box("")
-	add_check_box("")
-	add_check_box("")
-	add_check_box("")
-	add_check_box("")
-	add_check_box("")
-	add_check_box("")
-	add_check_box("")
-	add_check_box("")
-	add_check_box("")
-	add_check_box("")
+	add_check_box()
+	add_check_box()
+	add_check_box()
+	add_check_box()
+	add_check_box()
+	add_check_box()
+	add_check_box()
+	add_check_box()
+	add_check_box()
+	add_check_box()
+	add_check_box()
+	add_check_box()
+	add_check_box()
 	return
 
 # ====================================================== #

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/Character Planner Menu/input_lv.gd" id="1_njlcy"]
 
-[node name="InputLv" type="LineEdit"]
+[node name="Input Int" type="LineEdit"]
 size_flags_horizontal = 3
 text = "1"
 alignment = 1
