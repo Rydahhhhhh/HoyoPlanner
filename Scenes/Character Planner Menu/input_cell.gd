@@ -5,7 +5,9 @@ signal value_changed(to)
 signal preset_changed(to: String)
 const input_lv_properties = ["lv", "min_lv", "max_lv", "lv_changed", "min_lv_changed", "max_lv_changed", "set_lv", "set_min_lv", "set_max_lv"]
 
-@export_custom(PROPERTY_HINT_ENUM, "None,Simple,Expanded,CheckBox", PROPERTY_USAGE_NO_INSTANCE_STATE+4) var preset: String = "None": set = set_preset
+enum ValidPresets {NONE, SIMPLE, EXPANDED, CHECKBOX}
+
+@export var preset: ValidPresets = ValidPresets.NONE: set = _set_preset
 @onready var hidden_row: Control = $"Hidden Row"
 @onready var rows = []
 
@@ -17,6 +19,7 @@ const input_lv_properties = ["lv", "min_lv", "max_lv", "lv_changed", "min_lv_cha
 @onready var input_switch: CheckButton = %"Input Switch"
 @onready var input_check_box: CheckBox = %"Input CheckBox"
 
+var preset_data = {}
 var main_input = null
 var _preset = null
 
@@ -25,11 +28,7 @@ var _preset = null
 # ====================================================== #
 func _ready() -> void:
 	if not Engine.is_editor_hint():
-		preset_changed.connect(
-			func(pr): 
-				if pr != "None": 
-					hidden_row.queue_free()
-				)
+		hidden_row.queue_free()
 
 func _notification(what: int) -> void:
 	match what:
@@ -40,7 +39,7 @@ func _notification(what: int) -> void:
 			input_sub.custom_minimum_size.x = add_sub_btn_size
 		NOTIFICATION_EDITOR_PRE_SAVE:
 			_preset = preset
-			preset = "None"
+			preset = ValidPresets.NONE
 		NOTIFICATION_EDITOR_POST_SAVE:
 			preset = _preset
 
@@ -55,6 +54,9 @@ func _get(property: StringName) -> Variant:
 		return input_int.get(property)
 	return
 
+func _validate_property(property: Dictionary) -> void:
+	return
+
 # ====================================================== #
 #                   SIGNAL CONNECTIONS                   #
 # ====================================================== #
@@ -67,22 +69,29 @@ func switch_pressed(): pass
 # ====================================================== #
 #                        PRESETS                         #
 # ====================================================== #
-func set_preset(new_preset: String):
+static func get_preset_name(preset_n: ValidPresets):
+	return ValidPresets.keys()[preset_n]
+
+func set_preset(new_preset: ValidPresets, _preset_data: Dictionary = {}):
+	preset_data = _preset_data
+	return _set_preset(new_preset)
+
+func _set_preset(new_preset: ValidPresets):
 	if not is_node_ready():
 		return
 	
+	var preset_name = get_preset_name(new_preset)
 	var preset_fn_name = "preset %s" 
-	preset_fn_name = preset_fn_name % new_preset.to_lower()
+	preset_fn_name = preset_fn_name % preset_name.to_lower()
 	preset_fn_name = preset_fn_name.replace(" ", "_")
 	
 	var preset_fn = get(preset_fn_name)
 	if preset_fn != null:
 		assert(preset_fn is Callable)
 		
-		if new_preset != "None":
+		if new_preset != ValidPresets.NONE:
 			# Prevents calling it twice when setting preset to 'None'
 			preset_none()
-		
 		preset_fn.call()
 		
 		preset = new_preset
