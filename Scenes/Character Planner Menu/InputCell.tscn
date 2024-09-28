@@ -86,3 +86,9 @@ layout_mode = 2
 offset_right = 24.0
 offset_bottom = 24.0
 metadata/_edit_lock_ = true
+
+[connection signal="pressed" from="Hidden Row/Input Add" to="." method="add_pressed"]
+[connection signal="pressed" from="Hidden Row/Input Sub" to="." method="sub_pressed"]
+[connection signal="pressed" from="Hidden Row/Input Max" to="." method="max_pressed"]
+[connection signal="pressed" from="Hidden Row/Input Cycle" to="." method="cycle_pressed"]
+[connection signal="pressed" from="Hidden Row/Input Switch" to="." method="switch_pressed"]
