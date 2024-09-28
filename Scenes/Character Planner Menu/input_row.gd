@@ -1,4 +1,4 @@
-var cells = []
+var cells: Array[InputCellBase] = []
 
 
 func _init() -> void:
