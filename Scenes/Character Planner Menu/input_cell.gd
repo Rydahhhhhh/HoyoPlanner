@@ -1,13 +1,12 @@
 @tool
-extends VBoxContainer
+extends InputCellBase
 
-signal value_changed(to)
 signal preset_changed(to: String)
 const input_lv_properties = ["lv", "min_lv", "max_lv", "lv_changed", "min_lv_changed", "max_lv_changed", "set_lv", "set_min_lv", "set_max_lv"]
 
 enum ValidPresets {NONE, SIMPLE, EXPANDED, CHECKBOX}
 
-@export var preset: ValidPresets = ValidPresets.NONE: set = _set_preset
+@export var preset: ValidPresets = ValidPresets.NONE: set = set_preset
 @onready var hidden_row: Control = $"Hidden Row"
 @onready var rows = []
 
@@ -19,10 +18,6 @@ enum ValidPresets {NONE, SIMPLE, EXPANDED, CHECKBOX}
 @onready var input_switch: CheckButton = %"Input Switch"
 @onready var input_check_box: CheckBox = %"Input CheckBox"
 
-var preset_data = {}
-var main_input = null
-var _preset = null
-
 # ====================================================== #
 #                       OVERRIDES                        #
 # ====================================================== #
@@ -33,15 +28,11 @@ func _ready() -> void:
 func _notification(what: int) -> void:
 	match what:
 		NOTIFICATION_SORT_CHILDREN:
-			# Ensures the +1 and -1 Buttons have the same width
-			var add_sub_btn_size = max(input_add.get_minimum_size().x, input_sub.get_minimum_size().x)
-			input_add.custom_minimum_size.x = add_sub_btn_size
-			input_sub.custom_minimum_size.x = add_sub_btn_size
-		NOTIFICATION_EDITOR_PRE_SAVE:
-			_preset = preset
-			preset = ValidPresets.NONE
-		NOTIFICATION_EDITOR_POST_SAVE:
-			preset = _preset
+			if input_add != null and input_sub != null:
+				# Ensures the +1 and -1 Buttons have the same width
+				var add_sub_btn_size = max(input_add.get_minimum_size().x, input_sub.get_minimum_size().x)
+				input_add.custom_minimum_size.x = add_sub_btn_size
+				input_sub.custom_minimum_size.x = add_sub_btn_size
 
 func _set(property: StringName, value: Variant) -> bool:
 	if is_node_ready() and property in input_lv_properties:
@@ -67,18 +58,14 @@ func cycle_pressed(): pass
 func switch_pressed(): pass
 
 # ====================================================== #
-#                        PRESETS                         #
+#                     PRESET UTILS                       #
 # ====================================================== #
 static func get_preset_name(preset_n: ValidPresets):
 	return ValidPresets.keys()[preset_n]
 
-func set_preset(new_preset: ValidPresets, _preset_data: Dictionary = {}):
-	preset_data = _preset_data
-	return _set_preset(new_preset)
-
-func _set_preset(new_preset: ValidPresets):
+func set_preset(new_preset: ValidPresets):
 	if not is_node_ready():
-		return
+		await ready
 	
 	var preset_name = get_preset_name(new_preset)
 	var preset_fn_name = "preset %s" 
@@ -94,10 +81,13 @@ func _set_preset(new_preset: ValidPresets):
 			preset_none()
 		preset_fn.call()
 		
+		if Engine.is_editor_hint():
+			pass
+		
 		preset = new_preset
 		preset_changed.emit(new_preset)
 	else:
-		push_warning("No such preset %s" % new_preset)
+		push_warning("No function for preset: %s" % new_preset)
 	return
 
 func get_row(n: int) -> HBoxContainer:
@@ -109,15 +99,24 @@ func get_row(n: int) -> HBoxContainer:
 		rows.append(new_row)
 	return rows[n]
 
-func add_to_row(row:int, nodes: Array[Node]):
+func add_to_row(row:int, nodes: Array[Node]) -> void:
 	for node in nodes:
 		get_row(row).add_child.call_deferred(node.duplicate())
-	return
+	return 
 
+# ====================================================== #
+#                        PRESETS                         #
+# ====================================================== #
 func preset_none():
-	for row in rows.duplicate():
-		row.queue_free()
-		rows.erase(row)
+	# If you loop through rows directly then in certain cases rows will exist 
+	# but the 'rows' variable will be empty.
+	# For example: duplicating a scene instance in the editor; it'll already
+	# be configured for that preset but the setter will be called again
+	for row in get_children():
+		if row != hidden_row:
+			row.queue_free()
+			rows.erase(row)
+	
 	return
 
 func preset_simple():
@@ -132,7 +131,7 @@ func preset_expanded():
 func preset_checkbox():
 	add_to_row(0, [input_check_box])
 	return
-	
+
 # ====================================================== #
 #                      END OF FILE                       #
 # ====================================================== #
