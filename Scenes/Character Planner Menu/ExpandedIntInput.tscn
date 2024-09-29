@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://b6nwlb7e1yvvc"]
+
+[ext_resource type="Script" path="res://Scenes/Character Planner Menu/expanded_int_input.gd" id="1_4v7rg"]
+[ext_resource type="Script" path="res://Scenes/Character Planner Menu/int_input.gd" id="2_0thdd"]
+[ext_resource type="Script" path="res://Scenes/Character Planner Menu/is_ascended.gd" id="3_opmwb"]
+[ext_resource type="Script" path="res://Scenes/Character Planner Menu/int_input_btn.gd" id="3_phncs"]
+
+[node name="ExpandedIntInput" type="VBoxContainer"]
+script = ExtResource("1_4v7rg")
+Ascended = null
+max = 80
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="IntInput" type="LineEdit" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "1"
+alignment = 1
+script = ExtResource("2_0thdd")
+max_val = 80
+
+[node name="IsAscended" type="CheckButton" parent="HBoxContainer" node_paths=PackedStringArray("int_input", "int_input_btn")]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("3_opmwb")
+int_input = NodePath("../IntInput")
+int_input_btn = NodePath("../../HBoxContainer2/IntInputCycle")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="IntInputCycle" type="Button" parent="HBoxContainer2" node_paths=PackedStringArray("int_input_node")]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Next Asc"
+script = ExtResource("3_phncs")
+int_input_node = NodePath("../../HBoxContainer/IntInput")
+type = 2
+cycle_list = Array[int]([1, 20, 40, 60, 65, 70, 75, 80])
+hover_cycle_list = true
+
+[node name="IntInputMax" type="Button" parent="HBoxContainer2" node_paths=PackedStringArray("int_input_node")]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Max"
+script = ExtResource("3_phncs")
+int_input_node = NodePath("../../HBoxContainer/IntInput")
+type = 1
+set_to = 1
