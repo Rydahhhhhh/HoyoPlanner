@@ -12,11 +12,11 @@ mouse_default_cursor_shape = 1
 script = ExtResource("1_cgsn8")
 metadata/_edit_lock_ = true
 
-[node name="Hidden Row" type="Control" parent="."]
+[node name="HiddenRow" type="Control" parent="."]
 visible = false
 layout_mode = 2
 
-[node name="Input Int" parent="Hidden Row" instance=ExtResource("1_5gaae")]
+[node name="InputInt" parent="HiddenRow" instance=ExtResource("1_5gaae")]
 unique_name_in_owner = true
 layout_mode = 2
 offset_top = 8.0
@@ -24,7 +24,7 @@ offset_right = 73.0
 offset_bottom = 39.0
 caret_column = 1
 
-[node name="Input Add" type="Button" parent="Hidden Row"]
+[node name="InputAdd" type="Button" parent="HiddenRow"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(27, 0)
 layout_mode = 2
@@ -36,7 +36,7 @@ mouse_default_cursor_shape = 2
 text = "+1"
 metadata/_edit_lock_ = true
 
-[node name="Input Sub" type="Button" parent="Hidden Row"]
+[node name="InputSub" type="Button" parent="HiddenRow"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(27, 0)
 layout_mode = 2
@@ -48,7 +48,7 @@ mouse_default_cursor_shape = 2
 text = "-1"
 metadata/_edit_lock_ = true
 
-[node name="Input Max" type="Button" parent="Hidden Row"]
+[node name="InputMax" type="Button" parent="HiddenRow"]
 unique_name_in_owner = true
 layout_mode = 2
 offset_top = 43.0
@@ -58,7 +58,7 @@ mouse_default_cursor_shape = 2
 text = "Max"
 metadata/_edit_lock_ = true
 
-[node name="Input Cycle" type="Button" parent="Hidden Row"]
+[node name="InputCycle" type="Button" parent="HiddenRow"]
 unique_name_in_owner = true
 layout_mode = 2
 offset_left = 45.0
@@ -70,7 +70,7 @@ mouse_default_cursor_shape = 2
 text = "Next Asc"
 metadata/_edit_lock_ = true
 
-[node name="Input Switch" type="CheckButton" parent="Hidden Row"]
+[node name="InputSwitch" type="CheckButton" parent="HiddenRow"]
 unique_name_in_owner = true
 layout_mode = 2
 offset_left = 77.0
@@ -80,15 +80,15 @@ offset_bottom = 39.0
 mouse_default_cursor_shape = 2
 metadata/_edit_lock_ = true
 
-[node name="Input CheckBox" type="CheckBox" parent="Hidden Row"]
+[node name="InputCheckBox" type="CheckBox" parent="HiddenRow"]
 unique_name_in_owner = true
 layout_mode = 2
 offset_right = 24.0
 offset_bottom = 24.0
 metadata/_edit_lock_ = true
 
-[connection signal="pressed" from="Hidden Row/Input Add" to="." method="add_pressed"]
-[connection signal="pressed" from="Hidden Row/Input Sub" to="." method="sub_pressed"]
-[connection signal="pressed" from="Hidden Row/Input Max" to="." method="max_pressed"]
-[connection signal="pressed" from="Hidden Row/Input Cycle" to="." method="cycle_pressed"]
-[connection signal="pressed" from="Hidden Row/Input Switch" to="." method="switch_pressed"]
+[connection signal="pressed" from="HiddenRow/InputAdd" to="." method="add_pressed"]
+[connection signal="pressed" from="HiddenRow/InputSub" to="." method="sub_pressed"]
+[connection signal="pressed" from="HiddenRow/InputMax" to="." method="max_pressed"]
+[connection signal="pressed" from="HiddenRow/InputCycle" to="." method="cycle_pressed"]
+[connection signal="pressed" from="HiddenRow/InputSwitch" to="." method="switch_pressed"]
