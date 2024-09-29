@@ -5,7 +5,7 @@ signal val_changed(to: int)
 signal min_val_changed(to: int)
 signal max_val_changed(to: int)
 
-# See setter for type reason
+# See setter for the reason val ins't typed
 @export var val = 1: set = set_val
 @export var min_val: int = 1: set = set_min_val
 @export var max_val: int = 1: set = set_max_val
@@ -23,13 +23,17 @@ func _ready() -> void:
 	text_changed.connect(text_input_changed)
 	focus_exited.connect(_on_focus_exited)
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_accept"):
+		release_focus()
+
 # ====================================================== #
 #                    SETTER & GETTERS                    #
 # ====================================================== #
 func set_val(new_val):
 	# Godot doesn't let you set typed variables to null
 	# I want setting to null to have the empty text 
-	# this is impossible if it's typed
+	# it lets you have no text inside the text box while you're typing
 	
 	# Only updates the internal val once you're done typing
 	if has_focus():
