@@ -9,7 +9,6 @@ class_name InputCell extends Container
 # ====================================================== #
 func _ready() -> void:
 
-func _set(property: StringName, value: Variant) -> bool:
 
 func _get(property: StringName) -> Variant:
 	return
