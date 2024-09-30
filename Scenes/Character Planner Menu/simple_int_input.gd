@@ -5,31 +5,11 @@ extends IntInputCell
 @onready var int_input_sub: IntInputBtn = $IntInputSub
 @onready var int_input_max: IntInputBtn = $IntInputMax
 
-@export var add_by: int = 1: set = _set_add_by, get = _get_add_by
-@export var sub_by: int = 1: set = _set_sub_by, get = _get_sub_by
+func _ready() -> void:
+	super()
+	delegate_property(int_input_add, "operation_amount", "add_by")
+	delegate_property(int_input_sub, "operation_amount", "sub_by")
 
-# ====================================================== #
-#                   SETTERS & GETTERS                    #
-# ====================================================== #
-func _set_add_by(to: int):
-	if not is_node_ready():
-		await ready
-	int_input_add.operation_amount = to
-
-func _get_add_by(): 
-	if not is_node_ready():
-		await ready
-	return int_input_add.operation_amount
-
-func _set_sub_by(to: int): 
-	if not is_node_ready():
-		await ready
-	int_input_sub.operation_amount = to
-
-func _get_sub_by(): 
-	if not is_node_ready():
-		await ready
-	return int_input_sub.operation_amount
 # ====================================================== #
 #                       OVERRIDES                        #
 # ====================================================== #

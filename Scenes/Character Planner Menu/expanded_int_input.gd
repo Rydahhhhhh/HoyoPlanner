@@ -8,24 +8,11 @@ extends IntInputCell
 # ====================================================== #
 #                       FUNCTIONS                        #
 # ====================================================== #
-func get_data(data: Dictionary = {}) -> Dictionary:
-	super(data)
-	data["Ascended"] = Ascended
-	return data
-
-# ====================================================== #
-#                   SETTERS & GETTERS                    #
-# ====================================================== #
-func _set_ascended(to: bool):
-	if not is_node_ready():
-		await ready
-	# Validation occurs in that IsAscended node
-	is_ascended_btn.Ascended = to
-
-func _get_ascended():
-	if not is_node_ready():
-		await ready
-	return is_ascended_btn.Ascended
+func _ready() -> void:
+	#input_switch.value_changed.connect(_on_value_changed)
+	delegate_property(input_switch, "value", "switch_value")
+	delegate_property(int_input_cycle, "cycle_list", "Cycles")
+	super()
 
 # ====================================================== #
 #                      END OF FILE                       #
