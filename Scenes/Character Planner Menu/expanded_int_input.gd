@@ -1,9 +1,9 @@
 @tool
 extends IntInputCell
 
+@onready var int_input_cycle: IntInputBtn = %IntInputCycle
+@onready var input_switch: InputSwitch = %InputSwitch
 
-@export var Ascended: bool = false: set = _set_ascended, get = _get_ascended
-@onready var is_ascended_btn: IsAscended = %IsAscended
 
 # ====================================================== #
 #                       FUNCTIONS                        #
