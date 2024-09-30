@@ -1,70 +1,73 @@
-[gd_scene load_steps=3 format=3 uid="uid://ceqf0sud2bgtn"]
+[gd_scene load_steps=5 format=3 uid="uid://ceqf0sud2bgtn"]
 
 [ext_resource type="Script" path="res://Scenes/Character Planner Menu/input_column.gd" id="1_3yg1o"]
-[ext_resource type="PackedScene" uid="uid://cr6wfurweno23" path="res://Scenes/Character Planner Menu/InputCell.tscn" id="2_665ik"]
+[ext_resource type="PackedScene" uid="uid://b6nwlb7e1yvvc" path="res://Scenes/Character Planner Menu/ExpandedIntInput.tscn" id="2_pnd7q"]
+[ext_resource type="PackedScene" uid="uid://cvg3f1i63lqj7" path="res://Scenes/Character Planner Menu/simple_int_input.tscn" id="3_b5nwk"]
+[ext_resource type="PackedScene" uid="uid://c6prltt5aon4s" path="res://Scenes/Character Planner Menu/check_box_input.tscn" id="4_n5cvp"]
 
 [node name="SrInputColumn" type="VBoxContainer"]
 offset_right = 174.0
 offset_bottom = 602.0
 script = ExtResource("1_3yg1o")
 
-[node name="InputCell Character" parent="." instance=ExtResource("2_665ik")]
+[node name="Character Level" parent="." instance=ExtResource("2_pnd7q")]
 layout_mode = 2
-preset = 2
-metadata/_edit_pinned_properties_ = [&"preset"]
+max = 80
 
-[node name="InputCell Basic Attack" parent="." instance=ExtResource("2_665ik")]
+[node name="Basic Attack Level" parent="." instance=ExtResource("3_b5nwk")]
 layout_mode = 2
-preset = 1
-metadata/_edit_pinned_properties_ = [&"preset"]
+max = 6
 
-[node name="InputCell Skill" parent="." instance=ExtResource("2_665ik")]
+[node name="Skill Level" parent="." instance=ExtResource("3_b5nwk")]
 layout_mode = 2
-preset = 1
-metadata/_edit_pinned_properties_ = [&"preset"]
+max = 12
 
-[node name="InputCell Ultimate" parent="." instance=ExtResource("2_665ik")]
+[node name="Ultimate Level" parent="." instance=ExtResource("3_b5nwk")]
 layout_mode = 2
-preset = 1
-metadata/_edit_pinned_properties_ = [&"preset"]
+max = 12
 
-[node name="InputCell Talent" parent="." instance=ExtResource("2_665ik")]
+[node name="Talent Level" parent="." instance=ExtResource("3_b5nwk")]
 layout_mode = 2
-preset = 1
-metadata/_edit_pinned_properties_ = [&"preset"]
+max = 12
 
 [node name="Spacer" type="Control" parent="."]
-editor_description = "Input Column scenes will be children of the \"EasyGrid\" container. See it's documentation."
 layout_mode = 2
 
-[node name="InputCell Trace Passive" parent="." instance=ExtResource("2_665ik")]
+[node name="CheckBoxInput" parent="." instance=ExtResource("4_n5cvp")]
 layout_mode = 2
-size_flags_horizontal = 4
-preset = 3
-metadata/_edit_pinned_properties_ = [&"preset"]
 
-[connection signal="focus_exited" from="InputCell Character/InputCellRow/Input Int" to="InputCell Character/InputCellRow/Input Int" method="_on_focus_exited"]
-[connection signal="text_changed" from="InputCell Character/InputCellRow/Input Int" to="InputCell Character/InputCellRow/Input Int" method="text_input_changed"]
-[connection signal="pressed" from="InputCell Character/InputCellRow/Input Switch" to="InputCell Character" method="switch_pressed"]
-[connection signal="pressed" from="InputCell Character/InputCellRow2/Input Cycle" to="InputCell Character" method="cycle_pressed"]
-[connection signal="pressed" from="InputCell Character/InputCellRow2/Input Max" to="InputCell Character" method="max_pressed"]
-[connection signal="focus_exited" from="InputCell Basic Attack/InputCellRow/Input Int" to="InputCell Basic Attack/InputCellRow/Input Int" method="_on_focus_exited"]
-[connection signal="text_changed" from="InputCell Basic Attack/InputCellRow/Input Int" to="InputCell Basic Attack/InputCellRow/Input Int" method="text_input_changed"]
-[connection signal="pressed" from="InputCell Basic Attack/InputCellRow/Input Add" to="InputCell Basic Attack" method="add_pressed"]
-[connection signal="pressed" from="InputCell Basic Attack/InputCellRow/Input Sub" to="InputCell Basic Attack" method="sub_pressed"]
-[connection signal="pressed" from="InputCell Basic Attack/InputCellRow/Input Max" to="InputCell Basic Attack" method="max_pressed"]
-[connection signal="focus_exited" from="InputCell Skill/InputCellRow/Input Int" to="InputCell Skill/InputCellRow/Input Int" method="_on_focus_exited"]
-[connection signal="text_changed" from="InputCell Skill/InputCellRow/Input Int" to="InputCell Skill/InputCellRow/Input Int" method="text_input_changed"]
-[connection signal="pressed" from="InputCell Skill/InputCellRow/Input Add" to="InputCell Skill" method="add_pressed"]
-[connection signal="pressed" from="InputCell Skill/InputCellRow/Input Sub" to="InputCell Skill" method="sub_pressed"]
-[connection signal="pressed" from="InputCell Skill/InputCellRow/Input Max" to="InputCell Skill" method="max_pressed"]
-[connection signal="focus_exited" from="InputCell Ultimate/InputCellRow/Input Int" to="InputCell Ultimate/InputCellRow/Input Int" method="_on_focus_exited"]
-[connection signal="text_changed" from="InputCell Ultimate/InputCellRow/Input Int" to="InputCell Ultimate/InputCellRow/Input Int" method="text_input_changed"]
-[connection signal="pressed" from="InputCell Ultimate/InputCellRow/Input Add" to="InputCell Ultimate" method="add_pressed"]
-[connection signal="pressed" from="InputCell Ultimate/InputCellRow/Input Sub" to="InputCell Ultimate" method="sub_pressed"]
-[connection signal="pressed" from="InputCell Ultimate/InputCellRow/Input Max" to="InputCell Ultimate" method="max_pressed"]
-[connection signal="focus_exited" from="InputCell Talent/InputCellRow/Input Int" to="InputCell Talent/InputCellRow/Input Int" method="_on_focus_exited"]
-[connection signal="text_changed" from="InputCell Talent/InputCellRow/Input Int" to="InputCell Talent/InputCellRow/Input Int" method="text_input_changed"]
-[connection signal="pressed" from="InputCell Talent/InputCellRow/Input Add" to="InputCell Talent" method="add_pressed"]
-[connection signal="pressed" from="InputCell Talent/InputCellRow/Input Sub" to="InputCell Talent" method="sub_pressed"]
-[connection signal="pressed" from="InputCell Talent/InputCellRow/Input Max" to="InputCell Talent" method="max_pressed"]
+[node name="CheckBoxInput2" parent="." instance=ExtResource("4_n5cvp")]
+layout_mode = 2
+
+[node name="CheckBoxInput3" parent="." instance=ExtResource("4_n5cvp")]
+layout_mode = 2
+
+[node name="CheckBoxInput4" parent="." instance=ExtResource("4_n5cvp")]
+layout_mode = 2
+
+[node name="CheckBoxInput5" parent="." instance=ExtResource("4_n5cvp")]
+layout_mode = 2
+
+[node name="CheckBoxInput6" parent="." instance=ExtResource("4_n5cvp")]
+layout_mode = 2
+
+[node name="CheckBoxInput7" parent="." instance=ExtResource("4_n5cvp")]
+layout_mode = 2
+
+[node name="CheckBoxInput8" parent="." instance=ExtResource("4_n5cvp")]
+layout_mode = 2
+
+[node name="CheckBoxInput9" parent="." instance=ExtResource("4_n5cvp")]
+layout_mode = 2
+
+[node name="CheckBoxInput10" parent="." instance=ExtResource("4_n5cvp")]
+layout_mode = 2
+
+[node name="CheckBoxInput11" parent="." instance=ExtResource("4_n5cvp")]
+layout_mode = 2
+
+[node name="CheckBoxInput12" parent="." instance=ExtResource("4_n5cvp")]
+layout_mode = 2
+
+[node name="CheckBoxInput13" parent="." instance=ExtResource("4_n5cvp")]
+layout_mode = 2
