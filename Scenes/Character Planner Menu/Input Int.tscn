@@ -1,13 +1,16 @@
 [gd_scene load_steps=2 format=3 uid="uid://bvfxhovxygquo"]
 
-[ext_resource type="Script" path="res://Scenes/Character Planner Menu/input_int.gd" id="1_njlcy"]
+[ext_resource type="Script" path="res://Scenes/Character Planner Menu/int_input.gd" id="1_njlcy"]
 
-[node name="Input Int" type="LineEdit"]
+[node name="IntInput" type="LineEdit"]
 size_flags_horizontal = 3
 text = "1"
 alignment = 1
 context_menu_enabled = false
 script = ExtResource("1_njlcy")
+val = null
+min_val = null
+max_val = null
 metadata/_edit_lock_ = true
 
 [connection signal="focus_exited" from="." to="." method="_on_focus_exited"]

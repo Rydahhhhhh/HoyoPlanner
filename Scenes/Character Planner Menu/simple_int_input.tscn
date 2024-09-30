@@ -8,6 +8,7 @@
 offset_right = 129.0
 offset_bottom = 31.0
 script = ExtResource("1_m0jyw")
+val = 1
 
 [node name="IntInput" type="LineEdit" parent="."]
 unique_name_in_owner = true

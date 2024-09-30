@@ -7,8 +7,8 @@
 
 [node name="ExpandedIntInput" type="VBoxContainer"]
 script = ExtResource("1_4v7rg")
-Ascended = null
-max = 80
+val = 1
+tetst = null
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
@@ -20,7 +20,6 @@ size_flags_horizontal = 3
 text = "1"
 alignment = 1
 script = ExtResource("2_0thdd")
-max_val = 80
 
 [node name="IsAscended" type="CheckButton" parent="HBoxContainer" node_paths=PackedStringArray("int_input", "int_input_btn")]
 unique_name_in_owner = true
@@ -34,6 +33,7 @@ layout_mode = 2
 
 [node name="IntInputCycle" type="Button" parent="HBoxContainer2" node_paths=PackedStringArray("int_input_node")]
 layout_mode = 2
+size_flags_horizontal = 3
 mouse_default_cursor_shape = 2
 text = "Next Asc"
 script = ExtResource("3_phncs")

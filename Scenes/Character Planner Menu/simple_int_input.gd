@@ -1,23 +1,35 @@
 @tool
 extends "res://Scenes/Character Planner Menu/int_input_cell.gd"
 
-@export var add_by: int = 1: set = _set_add_by
-@export var sub_by: int = 1: set = _set_sub_by
-
 @onready var int_input_add: IntInputBtn = $IntInputAdd
 @onready var int_input_sub: IntInputBtn = $IntInputSub
+@onready var int_input_max: Button = $IntInputMax
+
+@export var add_by: int = 1: set = _set_add_by, get = _get_add_by
+@export var sub_by: int = 1: set = _set_sub_by, get = _get_sub_by
 
 # ====================================================== #
 #                   SETTERS & GETTERS                    #
 # ====================================================== #
-func _set_add_by(to: int): 
-	add_by = to
+func _set_add_by(to: int):
+	if not is_node_ready():
+		await ready
 	int_input_add.operation_amount = to
 
+func _get_add_by(): 
+	if not is_node_ready():
+		await ready
+	return int_input_add.operation_amount
+
 func _set_sub_by(to: int): 
-	sub_by = to
+	if not is_node_ready():
+		await ready
 	int_input_sub.operation_amount = to
 
+func _get_sub_by(): 
+	if not is_node_ready():
+		await ready
+	return int_input_sub.operation_amount
 # ====================================================== #
 #                       OVERRIDES                        #
 # ====================================================== #
