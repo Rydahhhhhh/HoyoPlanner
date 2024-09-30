@@ -12,6 +12,8 @@ signal max_val_changed(to: int)
 var queued_val = null
 
 func _ready() -> void:
+	#print(get_signal_list())
+	#print(get_property_list().filter())
 	text = str(val)
 	alignment = HORIZONTAL_ALIGNMENT_CENTER
 	
@@ -50,7 +52,7 @@ func set_val(new_val):
 		queued_val = new_val
 	else:
 		assert(new_val is int)
-		var x = get_signal_connection_list("val_changed")
+		
 		# Ensures new_val is within the range
 		if new_val < min_val:
 			new_val = min_val
@@ -93,6 +95,16 @@ func _on_focus_exited() -> void:
 		assert(queued_val is int)
 		val = queued_val
 	queued_val = null
+
+# ====================================================== #
+#                         EDITOR                         #
+# ====================================================== #
+func exposed_properties():
+	# I'm not completely sold on this yet
+	return {
+		"signals": ["val_changed", "min_val_changed", "max_val_changed"],
+		"export_variables": ["val", "min_val", "max_val"]
+	}
 
 # ====================================================== #
 #                      END OF FILE                       #
