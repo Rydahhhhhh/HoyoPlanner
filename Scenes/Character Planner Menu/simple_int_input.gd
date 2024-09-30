@@ -1,9 +1,9 @@
 @tool
-extends "res://Scenes/Character Planner Menu/int_input_cell.gd"
+extends IntInputCell
 
 @onready var int_input_add: IntInputBtn = $IntInputAdd
 @onready var int_input_sub: IntInputBtn = $IntInputSub
-@onready var int_input_max: Button = $IntInputMax
+@onready var int_input_max: IntInputBtn = $IntInputMax
 
 @export var add_by: int = 1: set = _set_add_by, get = _get_add_by
 @export var sub_by: int = 1: set = _set_sub_by, get = _get_sub_by

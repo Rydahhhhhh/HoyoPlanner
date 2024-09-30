@@ -1,5 +1,5 @@
 @tool
-extends "res://Scenes/Character Planner Menu/int_input_cell.gd"
+extends IntInputCell
 
 
 @export var Ascended: bool = false: set = _set_ascended, get = _get_ascended

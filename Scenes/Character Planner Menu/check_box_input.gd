@@ -1,5 +1,5 @@
 @tool
-extends CenterContainer
+extends InputCell
 
 signal toggled(toggled_on: bool)
 

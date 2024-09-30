@@ -1,5 +1,5 @@
 @tool
-extends InputCellBase
+class_name InputCell extends Container
 
 signal preset_changed(to: String)
 const input_lv_properties = ["lv", "min_lv", "max_lv", "lv_changed", "min_lv_changed", "max_lv_changed", "set_lv", "set_min_lv", "set_max_lv"]

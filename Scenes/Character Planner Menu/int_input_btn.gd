@@ -1,5 +1,5 @@
 @tool
-extends Button
+class_name IntInputBtn extends Button
 
 signal cycled(to: int)
 

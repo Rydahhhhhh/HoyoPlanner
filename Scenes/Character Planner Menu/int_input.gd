@@ -1,5 +1,5 @@
 @tool
-extends LineEdit
+class_name IntInputEdit extends LineEdit
 
 signal val_changed(to: int)
 signal min_val_changed(to: int)
