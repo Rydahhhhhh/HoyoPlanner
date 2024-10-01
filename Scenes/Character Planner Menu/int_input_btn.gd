@@ -45,6 +45,11 @@ func _ready() -> void:
 	mouse_default_cursor_shape = CURSOR_POINTING_HAND
 	if not Engine.is_editor_hint():
 		assert(int_input_node != null)
+		
+		match type:
+			ButtonTypes.CYCLE:
+				if len(cycle_list) <= 0:
+					push_warning("cycle_list empty; button will have no effect")
 
 func _pressed() -> void:
 	match type:
@@ -81,10 +86,14 @@ func _validate_property(property: Dictionary) -> void:
 		property.usage = PROPERTY_USAGE_NONE
 	if type != ButtonTypes.CYCLE and property.name == "hover_cycle_list":
 		property.usage = PROPERTY_USAGE_NONE
+
 # ====================================================== #
 #                        UTILS                           #
 # ====================================================== #
 func _get_next_cylce(from: int):
+	if len(cycle_list) <= 0:
+		return from
+	
 	# Return to the start of the cycle if it's max
 	if cycle_list[-1] <= from:
 		return cycle_list[0]
