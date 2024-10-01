@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://ceqf0sud2bgtn"]
 
-[ext_resource type="Script" path="res://Scenes/Character Planner Menu/input_column.gd" id="1_3yg1o"]
+[ext_resource type="Script" path="res://Scenes/Character Planner Menu/sr_input_column.gd" id="1_20kso"]
 [ext_resource type="PackedScene" uid="uid://b6nwlb7e1yvvc" path="res://Scenes/Character Planner Menu/ExpandedIntInput.tscn" id="2_pnd7q"]
 [ext_resource type="PackedScene" uid="uid://cvg3f1i63lqj7" path="res://Scenes/Character Planner Menu/simple_int_input.tscn" id="3_b5nwk"]
 [ext_resource type="PackedScene" uid="uid://c6prltt5aon4s" path="res://Scenes/Character Planner Menu/check_box_input.tscn" id="4_n5cvp"]
@@ -8,66 +8,97 @@
 [node name="SrInputColumn" type="VBoxContainer"]
 offset_right = 174.0
 offset_bottom = 602.0
-script = ExtResource("1_3yg1o")
+script = ExtResource("1_20kso")
 
-[node name="Character Level" parent="." instance=ExtResource("2_pnd7q")]
+[node name="CharacterLevel" parent="." instance=ExtResource("2_pnd7q")]
+unique_name_in_owner = true
 layout_mode = 2
 max = 80
 
-[node name="Basic Attack Level" parent="." instance=ExtResource("3_b5nwk")]
+[node name="BasicAttackLevel" parent="." instance=ExtResource("3_b5nwk")]
+unique_name_in_owner = true
 layout_mode = 2
-max = 6
+stored_properties = ["value", "min", "max", "add_by", "sub_by"]
 
-[node name="Skill Level" parent="." instance=ExtResource("3_b5nwk")]
+[node name="SkillLevel" parent="." instance=ExtResource("3_b5nwk")]
+unique_name_in_owner = true
 layout_mode = 2
-max = 12
+stored_properties = ["value", "min", "max", "add_by", "sub_by"]
 
-[node name="Ultimate Level" parent="." instance=ExtResource("3_b5nwk")]
+[node name="UltimateLevel" parent="." instance=ExtResource("3_b5nwk")]
+unique_name_in_owner = true
 layout_mode = 2
-max = 12
+stored_properties = ["value", "min", "max", "add_by", "sub_by"]
 
-[node name="Talent Level" parent="." instance=ExtResource("3_b5nwk")]
+[node name="TalentLevel" parent="." instance=ExtResource("3_b5nwk")]
+unique_name_in_owner = true
 layout_mode = 2
-max = 12
+stored_properties = ["value", "min", "max", "add_by", "sub_by"]
 
 [node name="Spacer" type="Control" parent="."]
 layout_mode = 2
 
 [node name="CheckBoxInput" parent="." instance=ExtResource("4_n5cvp")]
 layout_mode = 2
+stored_properties = ["value"]
+value = false
 
 [node name="CheckBoxInput2" parent="." instance=ExtResource("4_n5cvp")]
 layout_mode = 2
+stored_properties = ["value"]
+value = false
 
 [node name="CheckBoxInput3" parent="." instance=ExtResource("4_n5cvp")]
 layout_mode = 2
+stored_properties = ["value"]
+value = false
 
 [node name="CheckBoxInput4" parent="." instance=ExtResource("4_n5cvp")]
 layout_mode = 2
+stored_properties = ["value"]
+value = false
 
 [node name="CheckBoxInput5" parent="." instance=ExtResource("4_n5cvp")]
 layout_mode = 2
+stored_properties = ["value"]
+value = false
 
 [node name="CheckBoxInput6" parent="." instance=ExtResource("4_n5cvp")]
 layout_mode = 2
+stored_properties = ["value"]
+value = false
 
 [node name="CheckBoxInput7" parent="." instance=ExtResource("4_n5cvp")]
 layout_mode = 2
+stored_properties = ["value"]
+value = false
 
 [node name="CheckBoxInput8" parent="." instance=ExtResource("4_n5cvp")]
 layout_mode = 2
+stored_properties = ["value"]
+value = false
 
 [node name="CheckBoxInput9" parent="." instance=ExtResource("4_n5cvp")]
 layout_mode = 2
+stored_properties = ["value"]
+value = false
 
 [node name="CheckBoxInput10" parent="." instance=ExtResource("4_n5cvp")]
 layout_mode = 2
+stored_properties = ["value"]
+value = false
 
 [node name="CheckBoxInput11" parent="." instance=ExtResource("4_n5cvp")]
 layout_mode = 2
+stored_properties = ["value"]
+value = false
 
 [node name="CheckBoxInput12" parent="." instance=ExtResource("4_n5cvp")]
 layout_mode = 2
+stored_properties = ["value"]
+value = false
 
 [node name="CheckBoxInput13" parent="." instance=ExtResource("4_n5cvp")]
 layout_mode = 2
+stored_properties = ["value"]
+value = false

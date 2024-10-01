@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cr6wfurweno23"]
 
 [ext_resource type="PackedScene" uid="uid://bvfxhovxygquo" path="res://Scenes/Character Planner Menu/Input Int.tscn" id="1_5gaae"]
-[ext_resource type="Script" path="res://Scenes/Character Planner Menu/input_cell.gd" id="1_cgsn8"]
+[ext_resource type="Script" path="res://Scenes/Character Planner Menu/input_cellold.gd" id="1_cgsn8"]
 
 [node name="InputCell" type="VBoxContainer"]
 unique_name_in_owner = true
