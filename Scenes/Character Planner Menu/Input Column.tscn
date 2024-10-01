@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://by4fblho7gyhf"]
-
-[ext_resource type="Script" path="res://Scenes/Character Planner Menu/input_column.gd" id="1_qrb1m"]
-
-[node name="Input Column" type="VBoxContainer"]
-script = ExtResource("1_qrb1m")
-metadata/_edit_lock_ = true

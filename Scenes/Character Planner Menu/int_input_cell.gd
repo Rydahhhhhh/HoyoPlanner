@@ -16,6 +16,9 @@ func get_data(data: Dictionary = {}) -> Dictionary:
 	data["val"] = int_input.val
 	return data
 
+func add_validator(validator_fn: Callable, validator_type: ValidatorTypes) -> void:
+	#int_input.add_validator(validator_fn)
+	return
 
 # ====================================================== #
 #                      END OF FILE                       #

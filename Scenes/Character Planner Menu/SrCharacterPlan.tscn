@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Global Nodes/SrCharacterPlan.gd" id="1_yn261"]
 [ext_resource type="PackedScene" uid="uid://dlh4aekng5g22" path="res://Scenes/Character Planner Menu/sr_label_column.tscn" id="2_snxmw"]
-[ext_resource type="PackedScene" uid="uid://ceqf0sud2bgtn" path="res://Scenes/Character Planner Menu/sr_input_column.tscn" id="3_ccqgt"]
+[ext_resource type="PackedScene" uid="uid://c3pl3trhxygo7" path="res://Scenes/Character Planner Menu/sripcol test.tscn" id="3_d3dmx"]
 
 [node name="SrCharacterPlan" type="HBoxContainer"]
 anchors_preset = 8
@@ -11,9 +11,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -241.0
-offset_top = -298.0
-offset_right = 242.0
-offset_bottom = 299.0
+offset_top = -315.0
+offset_right = 289.0
+offset_bottom = 317.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_yn261")
@@ -21,8 +21,46 @@ script = ExtResource("1_yn261")
 [node name="SrLabelColumn" parent="." instance=ExtResource("2_snxmw")]
 layout_mode = 2
 
-[node name="SrInputColumn" parent="." instance=ExtResource("3_ccqgt")]
+[node name="TechniqueLabel" parent="SrLabelColumn" index="5"]
+custom_minimum_size = Vector2(0, 23)
+
+[node name="Minor Traces" parent="SrLabelColumn" index="6"]
+custom_minimum_size = Vector2(0, 30)
+
+[node name="SubStat1" parent="SrLabelColumn" index="8"]
+custom_minimum_size = Vector2(117, 23)
+
+[node name="SubStat2" parent="SrLabelColumn" index="9"]
+custom_minimum_size = Vector2(84, 23)
+
+[node name="SubStat3" parent="SrLabelColumn" index="10"]
+custom_minimum_size = Vector2(88, 23)
+
+[node name="SubStat4" parent="SrLabelColumn" index="12"]
+custom_minimum_size = Vector2(68, 23)
+
+[node name="SubStat5" parent="SrLabelColumn" index="13"]
+custom_minimum_size = Vector2(127, 23)
+
+[node name="SubStat6" parent="SrLabelColumn" index="14"]
+custom_minimum_size = Vector2(94, 23)
+
+[node name="SubStat7" parent="SrLabelColumn" index="15"]
+custom_minimum_size = Vector2(0, 23)
+
+[node name="SubStat8" parent="SrLabelColumn" index="17"]
+custom_minimum_size = Vector2(74, 23)
+
+[node name="SubStat9" parent="SrLabelColumn" index="18"]
+custom_minimum_size = Vector2(127, 23)
+
+[node name="SubStat10" parent="SrLabelColumn" index="19"]
+custom_minimum_size = Vector2(94, 23)
+
+[node name="SripcolTest" parent="." instance=ExtResource("3_d3dmx")]
 layout_mode = 2
 
-[node name="SrInputColumn2" parent="." instance=ExtResource("3_ccqgt")]
+[node name="SripcolTest2" parent="." instance=ExtResource("3_d3dmx")]
 layout_mode = 2
+
+[editable path="SrLabelColumn"]

@@ -5,8 +5,7 @@ signal value_changed(to)
 
 enum ValidatorTypes {WARNING, PREVENT}
 
-@export_storage var stored_properties = []
-var delegated_properties := []
+var delegated_properties: Array[Dictionary] = []
 var delegated_properties_data := {}
 
 # ====================================================== #
@@ -29,9 +28,12 @@ func _get(property: StringName) -> Variant:
 	return
 
 func _set(property: StringName, value: Variant) -> bool:
-	if property in stored_properties and not is_node_ready():
+	if property not in self and not is_node_ready():
 		set_deferred(property, value)
 		return true
+	#if property in stored_properties and not is_node_ready():
+		#set_deferred(property, value)
+		#return true
 	
 	if property in delegated_properties_data:
 		var property_data = delegated_properties_data[property]
@@ -53,17 +55,20 @@ static func get_property_in(what: Node, property_name: String):
 			return property
 	return
 
-func delegate_property(to: Node, property_name: String, export_as: String = ""):
+func delegate_property(to: Node, property_name: String, export_as: String = "", store: bool = true):
+	assert(to != null)
 	var property = get_property_in(to, property_name)
+	
 	assert(property != null)
 	
-	if property.usage == 4096:
-		property.usage += PROPERTY_USAGE_EDITOR
-	
+	assert(property.usage <= 4102)
+	property.usage = 4102
 	property.name = export_as
 	
-	if property.name not in stored_properties:
-		stored_properties.append(property.name)
+	if not store or property.name == "value":
+		property.usage -= PROPERTY_USAGE_STORAGE
+		property.usage -= PROPERTY_USAGE_SCRIPT_VARIABLE
+	
 	
 	assert(export_as not in delegated_properties_data)
 	delegated_properties_data[export_as] = {"node": to, "property_name": property_name}

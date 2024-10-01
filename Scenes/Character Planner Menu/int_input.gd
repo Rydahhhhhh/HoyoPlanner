@@ -5,10 +5,12 @@ signal value_changed(to: int)
 signal min_value_changed(to: int)
 signal max_value_changed(to: int)
 
+
 # See setter for the reason value ins't typed
 @export var value = 1: set = set_value
 @export var min_value: int = 1: set = set_min_value
 @export var max_value: int = 1: set = set_max_value
+
 var queued_value = null
 var validators: Array[Callable] = []
 
@@ -27,6 +29,11 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept"):
 		release_focus()
+
+func _validate_property(property: Dictionary) -> void:
+	match property.name:
+		"value", "min_value", "max_value":
+			property.usage = PROPERTY_USAGE_EDITOR
 
 # ====================================================== #
 #                    SETTER & GETTERS                    #

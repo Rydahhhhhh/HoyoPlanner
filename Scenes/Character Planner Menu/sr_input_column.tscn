@@ -13,122 +13,80 @@ script = ExtResource("1_20kso")
 [node name="CharacterLevel" parent="." instance=ExtResource("2_pnd7q")]
 unique_name_in_owner = true
 layout_mode = 2
-max = 80
+min = 1
+max = 1
 
 [node name="BasicAttackLevel" parent="." instance=ExtResource("3_b5nwk")]
 unique_name_in_owner = true
 layout_mode = 2
-stored_properties = ["value", "min", "max", "add_by", "sub_by"]
-value = 1
-min = 1
-max = 6
-add_by = 1
-sub_by = 1
 
 [node name="SkillLevel" parent="." instance=ExtResource("3_b5nwk")]
 unique_name_in_owner = true
 layout_mode = 2
-stored_properties = ["value", "min", "max", "add_by", "sub_by"]
-value = 1
-min = 1
-max = 12
-add_by = 1
-sub_by = 1
 
 [node name="UltimateLevel" parent="." instance=ExtResource("3_b5nwk")]
 unique_name_in_owner = true
 layout_mode = 2
-stored_properties = ["value", "min", "max", "add_by", "sub_by"]
-value = 1
-min = 1
-max = 12
-add_by = 1
-sub_by = 1
 
 [node name="TalentLevel" parent="." instance=ExtResource("3_b5nwk")]
 unique_name_in_owner = true
 layout_mode = 2
-stored_properties = ["value", "min", "max", "add_by", "sub_by"]
-value = 1
-min = 1
-max = 12
-add_by = 1
-sub_by = 1
 
 [node name="TechniqueLevel" parent="." instance=ExtResource("3_b5nwk")]
 unique_name_in_owner = true
 layout_mode = 2
-stored_properties = ["value", "min", "max", "add_by", "sub_by"]
-value = 1
-min = 1
-max = 12
-add_by = 1
-sub_by = 1
 
 [node name="Spacer" type="Control" parent="."]
 layout_mode = 2
 
-[node name="CheckBoxInput" parent="." instance=ExtResource("4_n5cvp")]
+[node name="PassiveTrace1" parent="." instance=ExtResource("4_n5cvp")]
+unique_name_in_owner = true
 layout_mode = 2
-stored_properties = ["value"]
-value = false
 
-[node name="CheckBoxInput2" parent="." instance=ExtResource("4_n5cvp")]
+[node name="PassiveTrace2" parent="." instance=ExtResource("4_n5cvp")]
+unique_name_in_owner = true
 layout_mode = 2
-stored_properties = ["value"]
-value = false
 
-[node name="CheckBoxInput3" parent="." instance=ExtResource("4_n5cvp")]
+[node name="PassiveTrace3" parent="." instance=ExtResource("4_n5cvp")]
+unique_name_in_owner = true
 layout_mode = 2
-stored_properties = ["value"]
-value = false
 
-[node name="CheckBoxInput4" parent="." instance=ExtResource("4_n5cvp")]
+[node name="MinorTrace1" parent="." instance=ExtResource("4_n5cvp")]
+unique_name_in_owner = true
 layout_mode = 2
-stored_properties = ["value"]
-value = false
 
-[node name="CheckBoxInput5" parent="." instance=ExtResource("4_n5cvp")]
+[node name="MinorTrace2" parent="." instance=ExtResource("4_n5cvp")]
+unique_name_in_owner = true
 layout_mode = 2
-stored_properties = ["value"]
-value = false
 
-[node name="CheckBoxInput6" parent="." instance=ExtResource("4_n5cvp")]
+[node name="MinorTrace3" parent="." instance=ExtResource("4_n5cvp")]
+unique_name_in_owner = true
 layout_mode = 2
-stored_properties = ["value"]
-value = false
 
-[node name="CheckBoxInput7" parent="." instance=ExtResource("4_n5cvp")]
+[node name="MinorTrace4" parent="." instance=ExtResource("4_n5cvp")]
+unique_name_in_owner = true
 layout_mode = 2
-stored_properties = ["value"]
-value = false
 
-[node name="CheckBoxInput8" parent="." instance=ExtResource("4_n5cvp")]
+[node name="MinorTrace5" parent="." instance=ExtResource("4_n5cvp")]
+unique_name_in_owner = true
 layout_mode = 2
-stored_properties = ["value"]
-value = false
 
-[node name="CheckBoxInput9" parent="." instance=ExtResource("4_n5cvp")]
+[node name="MinorTrace6" parent="." instance=ExtResource("4_n5cvp")]
+unique_name_in_owner = true
 layout_mode = 2
-stored_properties = ["value"]
-value = false
 
-[node name="CheckBoxInput10" parent="." instance=ExtResource("4_n5cvp")]
+[node name="MinorTrace7" parent="." instance=ExtResource("4_n5cvp")]
+unique_name_in_owner = true
 layout_mode = 2
-stored_properties = ["value"]
-value = false
 
-[node name="CheckBoxInput11" parent="." instance=ExtResource("4_n5cvp")]
+[node name="MinorTrace8" parent="." instance=ExtResource("4_n5cvp")]
+unique_name_in_owner = true
 layout_mode = 2
-stored_properties = ["value"]
-value = false
 
-[node name="CheckBoxInput12" parent="." instance=ExtResource("4_n5cvp")]
+[node name="MinorTrace9" parent="." instance=ExtResource("4_n5cvp")]
+unique_name_in_owner = true
 layout_mode = 2
-stored_properties = ["value"]
-value = false
 
-[node name="CheckBoxInput13" parent="." instance=ExtResource("4_n5cvp")]
+[node name="MinorTrace10" parent="." instance=ExtResource("4_n5cvp")]
+unique_name_in_owner = true
 layout_mode = 2
-stored_properties = ["value"]
-value = false

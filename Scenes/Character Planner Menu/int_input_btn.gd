@@ -3,14 +3,11 @@ class_name IntInputBtn extends Button
 
 signal cycled(to: int)
 
-# Used for typing only
-const IntInput = preload("res://Scenes/Character Planner Menu/int_input.gd")
-
 enum ButtonTypes {OPERATION, SET, CYCLE}
 enum Operations {ADD, SUB, MUL, DIV, MOD}
 enum SetTypes {MIN, MAX}
 
-@export var int_input_node: IntInput
+@export var int_input_edit: IntInputEdit
 @export var type: ButtonTypes = ButtonTypes.OPERATION: set = _set_type
 
 # Variables related to ButtonTypes.OPERATION
@@ -44,7 +41,7 @@ func _set_operation_amount(to: int):
 func _ready() -> void:
 	mouse_default_cursor_shape = CURSOR_POINTING_HAND
 	if not Engine.is_editor_hint():
-		assert(int_input_node != null)
+		assert(int_input_edit != null)
 		
 		match type:
 			ButtonTypes.CYCLE:
@@ -55,18 +52,18 @@ func _pressed() -> void:
 	match type:
 		ButtonTypes.OPERATION:
 			match operation:
-				Operations.ADD: int_input_node.value += operation_amount
-				Operations.SUB: int_input_node.value -= operation_amount
-				Operations.MUL: int_input_node.value *= operation_amount
-				Operations.DIV: int_input_node.value /= operation_amount
-				Operations.MOD: int_input_node.value %= operation_amount
+				Operations.ADD: int_input_edit.value += operation_amount
+				Operations.SUB: int_input_edit.value -= operation_amount
+				Operations.MUL: int_input_edit.value *= operation_amount
+				Operations.DIV: int_input_edit.value /= operation_amount
+				Operations.MOD: int_input_edit.value %= operation_amount
 		ButtonTypes.SET:
 			match set_to:
-				SetTypes.MIN: int_input_node.value = int_input_node.min_value
-				SetTypes.MAX: int_input_node.value = int_input_node.max_value
+				SetTypes.MIN: int_input_edit.value = int_input_edit.min_value
+				SetTypes.MAX: int_input_edit.value = int_input_edit.max_value
 		ButtonTypes.CYCLE:
-			int_input_node.value = _get_next_cylce(int_input_node.value)
-			cycled.emit(int_input_node.value)
+			int_input_edit.value = _get_next_cylce(int_input_edit.value)
+			cycled.emit(int_input_edit.value)
 
 # ====================================================== #
 #                        EDITOR                          #
@@ -94,7 +91,7 @@ func _get_next_cylce(from: int):
 	if len(cycle_list) <= 0:
 		return from
 	
-	# Return to the start of the cycle if it's max
+	# Return to the start of the cycle if it's greater or equal to the maximum value
 	if cycle_list[-1] <= from:
 		return cycle_list[0]
 	

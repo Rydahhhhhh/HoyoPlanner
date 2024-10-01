@@ -1,17 +1,28 @@
-[gd_scene load_steps=2 format=3 uid="uid://cw8toj2wvpp2p"]
+[gd_scene load_steps=3 format=3 uid="uid://cw8toj2wvpp2p"]
 
-[ext_resource type="Script" path="res://Scenes/Character Planner Menu/character_planner_menu.gd" id="1_ckroi"]
+[ext_resource type="PackedScene" uid="uid://y0xp70vofje8" path="res://Scenes/Character Planner Menu/SrCharacterPlan.tscn" id="1_3av1a"]
+[ext_resource type="Script" path="res://Scenes/Character Planner Menu/character_planner_menu.gd" id="1_n3a7k"]
 
-[node name="Character Planner Menu" type="HBoxContainer"]
+[node name="Character Planner Menu" type="VBoxContainer"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -541.0
-offset_top = -291.0
-offset_right = 487.0
-offset_bottom = 303.0
+offset_left = -249.0
+offset_top = -445.0
+offset_right = 234.0
+offset_bottom = 164.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ckroi")
+script = ExtResource("1_n3a7k")
+
+[node name="SrCharacterPlan" parent="." instance=ExtResource("1_3av1a")]
+layout_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+text = "DONE"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

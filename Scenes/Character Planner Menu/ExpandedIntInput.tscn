@@ -7,11 +7,10 @@
 
 [node name="ExpandedIntInput" type="VBoxContainer"]
 script = ExtResource("1_4v7rg")
-stored_properties = ["switch_value", "Cycles", "value", "min", "max"]
-Cycles = Array[int]([])
-value = 1
-min = 1
-max = 1
+min = 22
+max = 123123
+switch_value = false
+Cycles = Array[int]([13, 123, 312, 312, 123])
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
@@ -20,9 +19,9 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-text = "1"
+text = "25"
 alignment = 1
-caret_column = 1
+caret_column = 2
 script = ExtResource("2_0thdd")
 
 [node name="InputSwitch" type="CheckButton" parent="HBoxContainer"]
@@ -33,22 +32,23 @@ script = ExtResource("3_2k846")
 [node name="HBoxContainer2" type="HBoxContainer" parent="."]
 layout_mode = 2
 
-[node name="IntInputCycle" type="Button" parent="HBoxContainer2" node_paths=PackedStringArray("int_input_node")]
+[node name="IntInputCycle" type="Button" parent="HBoxContainer2" node_paths=PackedStringArray("int_input_edit")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_default_cursor_shape = 2
 text = "Next Asc"
 script = ExtResource("3_phncs")
-int_input_node = NodePath("../../HBoxContainer/IntInput")
+int_input_edit = NodePath("../../HBoxContainer/IntInput")
 type = 2
+cycle_list = Array[int]([13, 123, 312, 312, 123])
 hover_cycle_list = true
 
-[node name="IntInputMax" type="Button" parent="HBoxContainer2" node_paths=PackedStringArray("int_input_node")]
+[node name="IntInputMax" type="Button" parent="HBoxContainer2" node_paths=PackedStringArray("int_input_edit")]
 layout_mode = 2
 mouse_default_cursor_shape = 2
 text = "Max"
 script = ExtResource("3_phncs")
-int_input_node = NodePath("../../HBoxContainer/IntInput")
+int_input_edit = NodePath("../../HBoxContainer/IntInput")
 type = 1
 set_to = 1

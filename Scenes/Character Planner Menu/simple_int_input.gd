@@ -1,5 +1,5 @@
 @tool
-extends IntInputCell
+class_name SimpleIntInput extends IntInputCell
 
 @onready var int_input_add: IntInputBtn = $IntInputAdd
 @onready var int_input_sub: IntInputBtn = $IntInputSub
