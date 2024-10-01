@@ -50,18 +50,18 @@ func _pressed() -> void:
 	match type:
 		ButtonTypes.OPERATION:
 			match operation:
-				Operations.ADD: int_input_node.val += operation_amount
-				Operations.SUB: int_input_node.val -= operation_amount
-				Operations.MUL: int_input_node.val *= operation_amount
-				Operations.DIV: int_input_node.val /= operation_amount
-				Operations.MOD: int_input_node.val %= operation_amount
+				Operations.ADD: int_input_node.value += operation_amount
+				Operations.SUB: int_input_node.value -= operation_amount
+				Operations.MUL: int_input_node.value *= operation_amount
+				Operations.DIV: int_input_node.value /= operation_amount
+				Operations.MOD: int_input_node.value %= operation_amount
 		ButtonTypes.SET:
 			match set_to:
-				SetTypes.MIN: int_input_node.val = int_input_node.min_val
-				SetTypes.MAX: int_input_node.val = int_input_node.max_val
+				SetTypes.MIN: int_input_node.value = int_input_node.min_value
+				SetTypes.MAX: int_input_node.value = int_input_node.max_value
 		ButtonTypes.CYCLE:
-			int_input_node.val = _get_next_cylce(int_input_node.val)
-			cycled.emit(int_input_node.val)
+			int_input_node.value = _get_next_cylce(int_input_node.value)
+			cycled.emit(int_input_node.value)
 
 # ====================================================== #
 #                        EDITOR                          #
