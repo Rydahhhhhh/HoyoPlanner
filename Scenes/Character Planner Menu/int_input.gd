@@ -1,9 +1,9 @@
 @tool
 class_name IntInputEdit extends LineEdit
 
-signal value_changed(to: int)
-signal min_value_changed(to: int)
-signal max_value_changed(to: int)
+signal value_changed(to: int) ## Emitted only when the [member value] [b]actually[/b] changes. See [method _set_value]
+signal min_value_changed(to: int) ## Emitted when the min_value is changed. 
+signal max_value_changed(to: int) ## Emitted when the max_value is changed. 
 
 
 # See setter for the reason value ins't typed
