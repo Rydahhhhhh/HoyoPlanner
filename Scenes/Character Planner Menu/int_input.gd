@@ -8,11 +8,12 @@ signal min_value_changed(to: int) ## Emitted when the min_value is changed.
 signal max_value_changed(to: int) ## Emitted when the max_value is changed. 
 
 
-# See setter for the reason value ins't typed
-@export var value = 1: set = set_value
 @export var min_value: int = 1: set = set_min_value
 @export var max_value: int = 1: set = set_max_value
 
+## The [int] value the node represents. [b]Won't always be the same as what is displayed on the screen. [/b][br][br]
+## [b]Note:[/b] Due to the inability of setting typed variables to null this variable isn't typed to [int]
+var value = 1: set = _set_value
 
 var _validators: Array[Callable] = []
 var _queued_value = null
