@@ -3,7 +3,7 @@ class_name InputSwitch extends CheckButton
 
 signal value_changed(to)
 
-var value: bool: set = _set_value, get = _get_value
+var value: bool = false: set = _set_value, get = _get_value
 
 func _ready() -> void:
 	var validate_self = func(x=null): value = value
@@ -20,16 +20,17 @@ func _set_value(to: bool):
 	if not is_node_ready():
 		await ready
 	
-	if owner and "switch_validator" in owner and owner.switch_validator != null:
-		assert(owner.switch_validator is Callable)
-		button_pressed = owner.switch_validator.call(to)
-	else:
-		button_pressed = to
-	if owner and "switch_disable_condition" in owner and owner.switch_disable_condition != null:
-		assert(owner.switch_disable_condition is Callable)
-		disabled = owner.switch_disable_condition.call(to)
-	else:
-		disabled = false
+	#if owner and "switch_validator" in owner and owner.switch_validator != null:
+		#assert(owner.switch_validator is Callable)
+		#print(owner.switch_validator)
+		#button_pressed = owner.switch_validator.call(to)
+	#else:
+	button_pressed = to
+	#if owner and "switch_disable_condition" in owner and owner.switch_disable_condition != null:
+		#assert(owner.switch_disable_condition is Callable)
+		#disabled = owner.switch_disable_condition.call(to)
+	#else:
+	disabled = false
 	# if the value was actually changed
 	if button_pressed == not to:
 		value_changed.emit(to)

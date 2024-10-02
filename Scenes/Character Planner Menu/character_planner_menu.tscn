@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cw8toj2wvpp2p"]
 
-[ext_resource type="PackedScene" uid="uid://y0xp70vofje8" path="res://Scenes/Character Planner Menu/SrCharacterPlan.tscn" id="1_3av1a"]
+[ext_resource type="PackedScene" uid="uid://y0xp70vofje8" path="res://Scenes/Character Planner Menu/sr_character_plan.tscn" id="1_3av1a"]
 [ext_resource type="Script" path="res://Scenes/Character Planner Menu/character_planner_menu.gd" id="1_n3a7k"]
 
 [node name="Character Planner Menu" type="VBoxContainer"]

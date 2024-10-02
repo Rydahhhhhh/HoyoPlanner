@@ -19,29 +19,33 @@ layout_mode = 2
 text = "1"
 alignment = 1
 script = ExtResource("2_mg6yl")
+clamp_behavior = 3
 
-[node name="IntInputAdd" type="Button" parent="."]
+[node name="IntInputAdd" type="Button" parent="." node_paths=PackedStringArray("int_input_edit")]
 custom_minimum_size = Vector2(27, 0)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 text = "+1"
 script = ExtResource("3_1h51c")
+int_input_edit = NodePath("../IntInput")
 operation_amount = 1
 
-[node name="IntInputSub" type="Button" parent="."]
+[node name="IntInputSub" type="Button" parent="." node_paths=PackedStringArray("int_input_edit")]
 custom_minimum_size = Vector2(27, 0)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 text = "-1"
 script = ExtResource("3_1h51c")
+int_input_edit = NodePath("../IntInput")
 operation = 1
 operation_amount = 1
 
-[node name="IntInputMax" type="Button" parent="."]
+[node name="IntInputMax" type="Button" parent="." node_paths=PackedStringArray("int_input_edit")]
 custom_minimum_size = Vector2(27, 0)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 text = "Max"
 script = ExtResource("3_1h51c")
+int_input_edit = NodePath("../IntInput")
 type = 1
 set_to = 1

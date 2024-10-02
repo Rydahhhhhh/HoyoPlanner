@@ -1,9 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://c6prltt5aon4s"]
+[gd_scene load_steps=2 format=3 uid="uid://pl3mrqe03nvi"]
 
 [ext_resource type="Script" path="res://Scenes/Character Planner Menu/check_box_input.gd" id="1_5du8b"]
 
 [node name="CheckBoxInput" type="CenterContainer"]
 script = ExtResource("1_5du8b")
+value = false
 
 [node name="CheckBox" type="CheckBox" parent="."]
 layout_mode = 2

@@ -21,22 +21,9 @@ enum SetTypes {MIN, MAX}
 @export var cycle_list: Array[int] = []
 @export var hover_cycle_list: bool = false
 
-# ====================================================== #
-#                   SETTERS & GETTERS                    #
-# ====================================================== #
-func _set_operation_amount(to: int):
-	if type != ButtonTypes.OPERATION:
-		return
-	operation_amount = to
-	match operation:
-		Operations.ADD: text = "+" + str(to)
-		Operations.SUB: text = "-" + str(to)
-		Operations.MUL: text = "*" + str(to)
-		Operations.DIV: text = "/" + str(to)
-		Operations.MOD: text = "%" + str(to)
 
 # ====================================================== #
-#                       FUNCTIONS                        #
+#                     _ready / _init                     #
 # ====================================================== #
 func _ready() -> void:
 	mouse_default_cursor_shape = CURSOR_POINTING_HAND
@@ -48,6 +35,9 @@ func _ready() -> void:
 				if len(cycle_list) <= 0:
 					push_warning("cycle_list empty; button will have no effect")
 
+# ====================================================== #
+#                VIRTUAL METHOD OVERRIDES                #
+# ====================================================== #
 func _pressed() -> void:
 	match type:
 		ButtonTypes.OPERATION:
@@ -68,10 +58,6 @@ func _pressed() -> void:
 # ====================================================== #
 #                        EDITOR                          #
 # ====================================================== #
-func _set_type(to: ButtonTypes):
-	type = to
-	notify_property_list_changed()
-
 func _validate_property(property: Dictionary) -> void:
 	if type != ButtonTypes.OPERATION and property.name == "operation":
 		property.usage = PROPERTY_USAGE_NONE
@@ -102,6 +88,24 @@ func _get_next_cylce(from: int):
 		# While loop protectection, god save me
 		assert(from < 1000)
 	return from
+
+# ====================================================== #
+#                   SETTERS & GETTERS                    #
+# ====================================================== #
+func _set_type(to: ButtonTypes):
+	type = to
+	notify_property_list_changed()
+
+func _set_operation_amount(to: int):
+	if type != ButtonTypes.OPERATION:
+		return
+	operation_amount = to
+	match operation:
+		Operations.ADD: text = "+" + str(to)
+		Operations.SUB: text = "-" + str(to)
+		Operations.MUL: text = "*" + str(to)
+		Operations.DIV: text = "/" + str(to)
+		Operations.MOD: text = "%" + str(to)
 
 # ====================================================== #
 #                      END OF FILE                       #
