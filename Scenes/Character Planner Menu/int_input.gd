@@ -8,8 +8,8 @@ signal min_value_changed(to: int) ## Emitted when the min_value is changed.
 signal max_value_changed(to: int) ## Emitted when the max_value is changed. 
 
 
-@export var min_value: int = 1: set = set_min_value
-@export var max_value: int = 1: set = set_max_value
+@export var min_value: int = 1: set = _set_min_value
+@export var max_value: int = 1: set = _set_max_value
 
 ## The [int] value the node represents. [b]Won't always be the same as what is displayed on the screen. [/b][br][br]
 ## [b]Note:[/b] Due to the inability of setting typed variables to null this variable isn't typed to [int]
@@ -21,12 +21,12 @@ func _ready() -> void:
 	text = str(value)
 	alignment = HORIZONTAL_ALIGNMENT_CENTER
 	
-	# 'value = value' triggers the setter and will valueidate it's current value
+	# 'value = value' calls the setter and validates it's current value
 	var update_value = func(signal_param): value = value
 	min_value_changed.connect(update_value)
 	max_value_changed.connect(update_value)
 	
-	text_changed.connect(text_input_changed)
+	text_changed.connect(_text_input_changed)
 	focus_exited.connect(_on_focus_exited)
 
 func _input(event: InputEvent) -> void:
@@ -59,7 +59,7 @@ func set_value(new_value):
 			new_value = min_value
 			text = ""
 		
-		queued_value = new_value
+		_queued_value = new_value
 	else:
 		assert(new_value is int)
 		
@@ -78,12 +78,12 @@ func set_value(new_value):
 	caret_column = len(text)
 	return
 
-func set_min_value(new_min_value):
+func _set_min_value(new_min_value):
 	if min_value != new_min_value and new_min_value <= max_value:
 		min_value = new_min_value
 		min_value_changed.emit(new_min_value)
 
-func set_max_value(new_max_value):
+func _set_max_value(new_max_value):
 	if max_value != new_max_value and new_max_value >= min_value:
 		max_value = new_max_value
 		max_value_changed.emit(new_max_value)
@@ -91,7 +91,7 @@ func set_max_value(new_max_value):
 # ====================================================== #
 #                   SIGNAL CONNECTIONS                   #
 # ====================================================== #
-func text_input_changed(new_text: String):
+func _text_input_changed(new_text: String):
 	var new_value_str := RegEx.create_from_string(r"\D+").sub(new_text, "", true)
 	if new_value_str.is_empty():
 		value = null
@@ -101,11 +101,8 @@ func text_input_changed(new_text: String):
 	return
 
 func _on_focus_exited() -> void:
-	if queued_value != null:
+	if _queued_value != null:
 		# GdScript doesn't allow typed variables to be null
-		assert(queued_value is int)
-		value = queued_value
-	queued_value = null
 
 # ====================================================== #
 #                        METHODS                         #
@@ -114,6 +111,9 @@ func add_validator(validator_fn: Callable, ):
 	validators.append(validator_fn)
 	return
 
+		assert(_queued_value is int)
+		value = _queued_value
+	_queued_value = null
 
 # ====================================================== #
 #                      END OF FILE                       #
