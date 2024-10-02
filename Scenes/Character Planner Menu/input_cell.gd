@@ -6,7 +6,6 @@ signal value_changed(to)
 enum ValidatorTypes {WARNING, PREVENT}
 
 var delegated_properties: Array[Dictionary] = []
-var delegated_properties_data := {}
 
 # ====================================================== #
 #                       OVERRIDES                        #
@@ -17,29 +16,29 @@ func _ready() -> void:
 func _get_property_list() -> Array[Dictionary]:
 	var properties: Array[Dictionary] = []
 	
-	properties.append_array(delegated_properties)
+	properties.append_array(delegated_properties.map(parse_delegated_property))
 	
 	return properties
 
 func _get(property: StringName) -> Variant:
-	if property in delegated_properties_data:
-		var property_data = delegated_properties_data[property]
-		return property_data.node.get(property_data.property_name)
+	for data in delegated_properties:
+		if property == data.alias:
+			return data.node.get(data.property_name)
 	return
 
 func _set(property: StringName, value: Variant) -> bool:
 	if property not in self and not is_node_ready():
 		set_deferred(property, value)
 		return true
-	#if property in stored_properties and not is_node_ready():
-		#set_deferred(property, value)
-		#return true
 	
-	if property in delegated_properties_data:
-		var property_data = delegated_properties_data[property]
-		property_data.node.set(property_data.property_name, value)
-		return true
+	for data in delegated_properties:
+		if property == data.alias:
+			data.node.set(data.property_name, value)
+			if data.update_editor:
+				notify_property_list_changed()
+			return true
 	return false
+
 # ====================================================== #
 #                        SIGNALS                         #
 # ====================================================== #
@@ -55,26 +54,26 @@ static func get_property_in(what: Node, property_name: String):
 			return property
 	return
 
-func delegate_property(to: Node, property_name: String, export_as: String = "", store: bool = true):
+static func parse_delegated_property(data: Dictionary) -> Dictionary:
+	var property = get_property_in(data.node, data.property_name)
+	
+	property.name = data.alias
+
+	return property
+
+func delegate_property(to: Node, property_name: String, alias: String = "", update_editor: bool = false):
 	assert(to != null)
-	var property = get_property_in(to, property_name)
+	var data = {"node": to, "property_name": property_name, "alias": alias, "update_editor": update_editor}
 	
-	assert(property != null)
+	if alias.is_empty():
+		data.alias = property_name
 	
-	assert(property.usage <= 4102)
-	property.usage = 4102
-	property.name = export_as
+	for prop in delegated_properties:
+		assert(prop.property_name != data.alias, "Property '%s' already exists")
 	
-	if not store or property.name == "value":
-		property.usage -= PROPERTY_USAGE_STORAGE
-		property.usage -= PROPERTY_USAGE_SCRIPT_VARIABLE
+	if data not in delegated_properties:
+		delegated_properties.append(data)
 	
-	
-	assert(export_as not in delegated_properties_data)
-	delegated_properties_data[export_as] = {"node": to, "property_name": property_name}
-	
-	assert(property not in delegated_properties)
-	delegated_properties.append(property)
 	notify_property_list_changed()
 	return
 
