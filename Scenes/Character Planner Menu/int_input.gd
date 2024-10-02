@@ -13,9 +13,9 @@ signal max_value_changed(to: int) ## Emitted when the max_value is changed.
 @export var min_value: int = 1: set = set_min_value
 @export var max_value: int = 1: set = set_max_value
 
-var queued_value = null
-var validators: Array[Callable] = []
 
+var _validators: Array[Callable] = []
+var _queued_value = null
 func _ready() -> void:
 	text = str(value)
 	alignment = HORIZONTAL_ALIGNMENT_CENTER
