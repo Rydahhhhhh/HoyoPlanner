@@ -11,14 +11,14 @@ config_version=5
 [application]
 
 config/name="HoyoPlanner"
-run/main_scene="res://Scenes/Character Planner Menu/character_planner_menu.tscn"
+run/main_scene="res://Scenes/main/main.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [display]
 
-window/size/viewport_width=1920
-window/size/viewport_height=1000
+window/size/viewport_width=1280
+window/size/viewport_height=720
 
 [rendering]
 
