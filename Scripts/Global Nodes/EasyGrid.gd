@@ -11,7 +11,7 @@ class_name EasyGrid extends HBoxContainer
 var grid_columns: Array[VBoxContainer] = [] 
 
 # ====================================================== #
-#                       OVERRIDES                        #
+#                VIRTUAL METHOD OVERRIDES                #
 # ====================================================== #
 func _notification(what: int) -> void:
 	match what:
@@ -40,7 +40,7 @@ func _notification(what: int) -> void:
 					child.custom_minimum_size.y = row_minh[child.get_index()]
 
 # ====================================================== #
-#                        METHODS                         #
+#                     PUBLIC METHODS                     #
 # ====================================================== #
 ## Makes [param column] be treated as grid column, and forces it to become a child of this node, then re-sorts children.
 func add_grid_column(column: VBoxContainer) -> VBoxContainer:
