@@ -7,8 +7,16 @@ signal value_changed(to: int) ## Emitted only when the [member value] [b]actuall
 signal min_value_changed(to: int) ## Emitted when the min_value is changed. 
 signal max_value_changed(to: int) ## Emitted when the max_value is changed. 
 
+const MIN_FLAG = 1 << 0 ## BitFlag that tells [method clamp_with_flag] to clamp [member value] to the minimum
+const MAX_FLAG = 1 << 1 ## BitFlag that tells [method clamp_with_flag] to clamp [member value] to the maximum
 
+## Flags that determine how [member value] should be clamped. 
+@export_flags("MIN", "MAX") 
+var clamp_behavior: int = 0: set = _set_clamp_behavior
+
+## Only shown in editor if [member clamp_behavior] has [constant MIN_FLAG]
 @export var min_value: int = 1: set = _set_min_value
+## Only shown in editor if [member clamp_behavior] has [constant MAX_FLAG]
 @export var max_value: int = 1: set = _set_max_value
 
 ## The [int] value the node represents. [b]Won't always be the same as what is displayed on the screen. [/b][br][br]
@@ -17,6 +25,10 @@ var value = 1: set = _set_value
 
 var _validators: Array[Callable] = []
 var _queued_value = null
+
+# ====================================================== #
+#                VIRTUAL METHOD OVERRIDES                #
+# ====================================================== #
 func _ready() -> void:
 	text = str(value)
 	
@@ -33,16 +45,29 @@ func _input(event: InputEvent) -> void:
 		release_focus()
 #
 func _validate_property(property: Dictionary) -> void:
-	match property.name:
-		"value", "min_value", "max_value":
-			property.usage = PROPERTY_USAGE_EDITOR
+	if property.name == "min_value" and not clamp_behavior & MIN_FLAG:
+		property.usage = PROPERTY_USAGE_NONE
+	if property.name == "max_value" and not clamp_behavior & MAX_FLAG:
+		property.usage = PROPERTY_USAGE_NONE
 
 # ====================================================== #
 #                     PRIVATE METHODS                    #
 # ====================================================== #
+## Clamps a [param val] within the [member min_value] & [member max_value] properties 
+## if [param flags] includes the [constant MIN_FLAG] & [constant MAX_FLAG] respectively
+func _clamp_with_flag(val: int, flags: int) -> int:
+	if MIN_FLAG & flags:
+		val = max(val, min_value)
+	if MAX_FLAG & flags:
+		val = min(val, max_value)
+	
+	return val
+
 # =========================== #
 #      SETTER & GETTERS       #
 # =========================== #
+## Validates and sets [member value]
+## if called while in focus, [member value] won't be updated until focus is lost. Required to allow the [member text] to be empty while typing.
 func _set_value(new_value):
 	# Godot doesn't let you set typed variables to null
 	# I want setting to null to have the empty text 
@@ -51,10 +76,8 @@ func _set_value(new_value):
 	# Only updates the internal value once you're done typing
 	if has_focus():
 		if new_value is int:
-			# Even when you're typing it'll prevent you from going above the maximum
-			if new_value > max_value:
-				new_value = max_value
-			
+			# Prevent exceeding maximum value
+			new_value = _clamp_with_flag(new_value, clamp_behavior & MAX_FLAG)
 			text = str(new_value)
 		else:
 			assert(new_value == null)
@@ -64,11 +87,7 @@ func _set_value(new_value):
 	else:
 		assert(new_value is int)
 		
-		# Ensures new_value is within the range
-		if new_value < min_value:
-			new_value = min_value
-		elif new_value > max_value:
-			new_value = max_value
+		new_value = _clamp_with_flag(new_value, clamp_behavior & MIN_FLAG | MAX_FLAG)
 		text = str(new_value)
 		value = new_value
 		value_changed.emit(value)
@@ -86,6 +105,11 @@ func _set_max_value(new_max_value):
 	if max_value != new_max_value and new_max_value >= min_value:
 		max_value = new_max_value
 		max_value_changed.emit(new_max_value)
+
+func _set_clamp_behavior(to: int):
+	# Is there really not shorhand way to do this ?
+	clamp_behavior = to
+	notify_property_list_changed()
 
 # =========================== #
 #     SIGNAL CONNECTIONS      #
