@@ -32,10 +32,6 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="TechniqueLevel" parent="." instance=ExtResource("3_b5nwk")]
-unique_name_in_owner = true
-layout_mode = 2
-
 [node name="Spacer" type="Control" parent="."]
 layout_mode = 2
 

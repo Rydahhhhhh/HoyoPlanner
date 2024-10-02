@@ -65,15 +65,6 @@ text = "TALENT"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TechniqueLabel" type="Label" parent="."]
-custom_minimum_size = Vector2(0, 31)
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_fonts/font = SubResource("SystemFont_xckqa")
-text = "TECHNIQUE"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="Minor Traces" type="RichTextLabel" parent="."]
 custom_minimum_size = Vector2(0, 23)
 layout_mode = 2
