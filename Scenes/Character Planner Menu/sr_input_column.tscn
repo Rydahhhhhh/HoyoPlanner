@@ -13,8 +13,8 @@ script = ExtResource("1_20kso")
 [node name="CharacterLevel" parent="." instance=ExtResource("2_pnd7q")]
 unique_name_in_owner = true
 layout_mode = 2
-min = 1
-max = 1
+max = 80
+Cycles = Array[int]([1, 20, 30, 40, 50, 60, 70, 75, 80])
 
 [node name="BasicAttackLevel" parent="." instance=ExtResource("3_b5nwk")]
 unique_name_in_owner = true
