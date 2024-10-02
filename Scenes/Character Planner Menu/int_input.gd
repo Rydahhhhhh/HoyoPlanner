@@ -126,10 +126,6 @@ func _text_input_changed(new_text: String):
 func _on_focus_exited() -> void:
 	if _queued_value != null:
 		# GdScript doesn't allow typed variables to be null
-func add_validator(validator_fn: Callable, ):
-	validators.append(validator_fn)
-	return
-
 		assert(_queued_value is int)
 		value = _queued_value
 	_queued_value = null
