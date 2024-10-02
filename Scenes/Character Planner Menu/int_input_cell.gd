@@ -11,11 +11,6 @@ func _ready() -> void:
 	delegate_property(int_input, "min_value", "min")
 	delegate_property(int_input, "max_value", "max")
 
-func get_data(data: Dictionary = {}) -> Dictionary:
-	assert("val" not in data)
-	data["val"] = int_input.val
-	return data
-
 func add_validator(validator_fn: Callable, validator_type: ValidatorTypes) -> void:
 	#int_input.add_validator(validator_fn)
 	return
