@@ -58,18 +58,27 @@ static func parse_delegated_property(data: Dictionary) -> Dictionary:
 	var property = get_property_in(data.node, data.property_name)
 	
 	property.name = data.alias
-
+	
+	if data.editor != null:
+		property.usage -= property.usage & PROPERTY_USAGE_EDITOR
+		if data.editor:
+			property.usage |= PROPERTY_USAGE_EDITOR
 	return property
 
-func delegate_property(to: Node, property_name: String, alias: String = "", update_editor: bool = false):
+func delegate_property(to: Node, property_name: String, alias: String = "", update_editor: bool = false, editor = null):
 	assert(to != null)
-	var data = {"node": to, "property_name": property_name, "alias": alias, "update_editor": update_editor}
+	var data = {
+		"node": to, 
+		"property_name": property_name, 
+		"alias": alias, 
+		"update_editor": update_editor, 
+		"editor": editor
+	}
 	
 	if alias.is_empty():
 		data.alias = property_name
 	
-	for prop in delegated_properties:
-		assert(prop.property_name != data.alias, "Property '%s' already exists")
+	assert(data.alias not in self, "Property '%s' already exists")
 	
 	if data not in delegated_properties:
 		delegated_properties.append(data)
