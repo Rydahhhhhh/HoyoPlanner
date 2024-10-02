@@ -19,7 +19,6 @@ var _validators: Array[Callable] = []
 var _queued_value = null
 func _ready() -> void:
 	text = str(value)
-	alignment = HORIZONTAL_ALIGNMENT_CENTER
 	
 	# 'value = value' calls the setter and validates it's current value
 	var update_value = func(signal_param): value = value
@@ -28,20 +27,23 @@ func _ready() -> void:
 	
 	text_changed.connect(_text_input_changed)
 	focus_exited.connect(_on_focus_exited)
-
+	
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept"):
 		release_focus()
-
+#
 func _validate_property(property: Dictionary) -> void:
 	match property.name:
 		"value", "min_value", "max_value":
 			property.usage = PROPERTY_USAGE_EDITOR
 
 # ====================================================== #
-#                    SETTER & GETTERS                    #
+#                     PRIVATE METHODS                    #
 # ====================================================== #
-func set_value(new_value):
+# =========================== #
+#      SETTER & GETTERS       #
+# =========================== #
+func _set_value(new_value):
 	# Godot doesn't let you set typed variables to null
 	# I want setting to null to have the empty text 
 	# as it lets you have no text inside the text box while you're typing
@@ -58,7 +60,6 @@ func set_value(new_value):
 			assert(new_value == null)
 			new_value = min_value
 			text = ""
-		
 		_queued_value = new_value
 	else:
 		assert(new_value is int)
@@ -69,9 +70,7 @@ func set_value(new_value):
 		elif new_value > max_value:
 			new_value = max_value
 		text = str(new_value)
-		
 		value = new_value
-		
 		value_changed.emit(value)
 	
 	# Setting text on a LineEdit makes the caret_column = 0
@@ -88,9 +87,9 @@ func _set_max_value(new_max_value):
 		max_value = new_max_value
 		max_value_changed.emit(new_max_value)
 
-# ====================================================== #
-#                   SIGNAL CONNECTIONS                   #
-# ====================================================== #
+# =========================== #
+#     SIGNAL CONNECTIONS      #
+# =========================== #
 func _text_input_changed(new_text: String):
 	var new_value_str := RegEx.create_from_string(r"\D+").sub(new_text, "", true)
 	if new_value_str.is_empty():
@@ -103,10 +102,6 @@ func _text_input_changed(new_text: String):
 func _on_focus_exited() -> void:
 	if _queued_value != null:
 		# GdScript doesn't allow typed variables to be null
-
-# ====================================================== #
-#                        METHODS                         #
-# ====================================================== #
 func add_validator(validator_fn: Callable, ):
 	validators.append(validator_fn)
 	return
