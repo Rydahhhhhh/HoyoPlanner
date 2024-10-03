@@ -11,13 +11,24 @@ config_version=5
 [application]
 
 config/name="HoyoPlanner"
+run/main_scene="res://Star Rail/temp.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Api="*res://Star Rail/Yatta Api/Request Manager.gd"
+Yatta="*res://Star Rail/Yatta Api/yatta.gd"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/size/mode=1
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/HTTPManager/plugin.cfg")
 
 [rendering]
 
