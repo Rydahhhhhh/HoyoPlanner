@@ -11,6 +11,8 @@ const ascension_max_levels := [
 	{"character": 80, "basic_attack": 6, "skill": 10, "ultimate": 10, "talent": 10}
 ]
 
+var data = SrCharacterPlanStep.new()
+
 @onready var character_level: ExpandedIntInput = %CharacterLevel
 @onready var basic_attack_level: SimpleIntInput = %BasicAttackLevel
 @onready var skill_level: SimpleIntInput = %SkillLevel
@@ -20,51 +22,46 @@ const ascension_max_levels := [
 @onready var passive_trace_1: CenterContainer = %PassiveTrace1
 @onready var passive_trace_2: CenterContainer = %PassiveTrace2
 @onready var passive_trace_3: CenterContainer = %PassiveTrace3
-@onready var minor_trace_1: CenterContainer = %MinorTrace1
-@onready var minor_trace_2: CenterContainer = %MinorTrace2
-@onready var minor_trace_3: CenterContainer = %MinorTrace3
-@onready var minor_trace_4: CenterContainer = %MinorTrace4
-@onready var minor_trace_5: CenterContainer = %MinorTrace5
-@onready var minor_trace_6: CenterContainer = %MinorTrace6
-@onready var minor_trace_7: CenterContainer = %MinorTrace7
-@onready var minor_trace_8: CenterContainer = %MinorTrace8
-@onready var minor_trace_9: CenterContainer = %MinorTrace9
-@onready var minor_trace_10: CenterContainer = %MinorTrace10
+@onready var stat_trace_1: CenterContainer = %StatTrace1
+@onready var stat_trace_2: CenterContainer = %StatTrace2
+@onready var stat_trace_3: CenterContainer = %StatTrace3
+@onready var stat_trace_4: CenterContainer = %StatTrace4
+@onready var stat_trace_5: CenterContainer = %StatTrace5
+@onready var stat_trace_6: CenterContainer = %StatTrace6
+@onready var stat_trace_7: CenterContainer = %StatTrace7
+@onready var stat_trace_8: CenterContainer = %StatTrace8
+@onready var stat_trace_9: CenterContainer = %StatTrace9
+@onready var stat_trace_10: CenterContainer = %StatTrace10
 
 func _ready() -> void:
-	character_level.switch_validator = ascension_switch_validator
-	character_level.switch_disable_condition = ascension_switch_disable
+	character_level.value_changed.connect(data.set_last.bind("character_level"))
+	basic_attack_level.value_changed.connect(data.set_last.bind("basic_attack_level"))
+	skill_level.value_changed.connect(data.set_last.bind("skill_level"))
+	ultimate_level.value_changed.connect(data.set_last.bind("ultimate_level"))
+	talent_level.value_changed.connect(data.set_last.bind("talent_level"))
+	
+	passive_trace_1.value_changed.connect(data.set_last.bind("passive_trace_1"))
+	passive_trace_2.value_changed.connect(data.set_last.bind("passive_trace_2"))
+	passive_trace_3.value_changed.connect(data.set_last.bind("passive_trace_3"))
+	stat_trace_1.value_changed.connect(data.set_last.bind("stat_trace_1"))
+	stat_trace_2.value_changed.connect(data.set_last.bind("stat_trace_2"))
+	stat_trace_3.value_changed.connect(data.set_last.bind("stat_trace_3"))
+	stat_trace_4.value_changed.connect(data.set_last.bind("stat_trace_4"))
+	stat_trace_5.value_changed.connect(data.set_last.bind("stat_trace_5"))
+	stat_trace_6.value_changed.connect(data.set_last.bind("stat_trace_6"))
+	stat_trace_7.value_changed.connect(data.set_last.bind("stat_trace_7"))
+	stat_trace_8.value_changed.connect(data.set_last.bind("stat_trace_8"))
+	stat_trace_9.value_changed.connect(data.set_last.bind("stat_trace_9"))
+	stat_trace_10.value_changed.connect(data.set_last.bind("stat_trace_10"))
+	
+	character_level.switch_validator = _ascension_switch_validator
+	character_level.switch_disable_condition = _ascension_switch_disable
 	return
-
-func get_data():
-	var data = {}
-	data["CharacterLevel"] = character_level.value
-	data["BasicAttackLevel"] = basic_attack_level.value
-	data["SkillLevel"] = skill_level.value
-	data["UltimateLevel"] = ultimate_level.value
-	data["TalentLevel"] = talent_level.value
-	
-	data["PassiveTrace1"] = passive_trace_1.value
-	data["PassiveTrace2"] = passive_trace_2.value
-	data["PassiveTrace3"] = passive_trace_3.value
-	data["MinorTrace1"] = minor_trace_1.value
-	data["MinorTrace2"] = minor_trace_2.value
-	data["MinorTrace3"] = minor_trace_3.value
-	data["MinorTrace4"] = minor_trace_4.value
-	data["MinorTrace5"] = minor_trace_5.value
-	data["MinorTrace6"] = minor_trace_6.value
-	data["MinorTrace7"] = minor_trace_7.value
-	data["MinorTrace8"] = minor_trace_8.value
-	data["MinorTrace9"] = minor_trace_9.value
-	data["MinorTrace10"] = minor_trace_10.value
-	
-	return data
-
 
 # ====================================================== #
 #                      VALIDATORS                        #
 # ====================================================== #
-func ascension_switch_validator(to: bool):
+func _ascension_switch_validator(to: bool):
 	var at_lowest_ascension = character_level.value < get_max_level(0, "character")
 	var at_highest_ascension = character_level.value > get_max_level(-2, "character")
 	var at_ascension_level = character_level.value in get_max_levels("character")
@@ -76,7 +73,7 @@ func ascension_switch_validator(to: bool):
 	
 	return true
 
-func ascension_switch_disable(value: bool):
+func _ascension_switch_disable(value: bool):
 	var at_ascension_level = character_level.value in get_max_levels("character")
 	var at_highest_ascension = character_level.value > get_max_level(-2, "character")
 	

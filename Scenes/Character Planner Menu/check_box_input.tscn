@@ -4,7 +4,7 @@
 
 [node name="CheckBoxInput" type="CenterContainer"]
 script = ExtResource("1_5du8b")
-value = false
+button_pressed = false
 
 [node name="CheckBox" type="CheckBox" parent="."]
 layout_mode = 2

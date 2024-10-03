@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://ceqf0sud2bgtn"]
 
-[ext_resource type="Script" path="res://Scenes/Character Planner Menu/sr_input_column.gd" id="1_20kso"]
+[ext_resource type="Script" path="res://Scenes/sr/sr_input_column.gd" id="1_20kso"]
 [ext_resource type="PackedScene" uid="uid://b6nwlb7e1yvvc" path="res://Scenes/Character Planner Menu/expanded_int_input.tscn" id="2_pnd7q"]
 [ext_resource type="PackedScene" uid="uid://cj1g1mdugi5k0" path="res://Scenes/Character Planner Menu/simple_int_input.tscn" id="3_b5nwk"]
 [ext_resource type="PackedScene" uid="uid://pl3mrqe03nvi" path="res://Scenes/Character Planner Menu/check_box_input.tscn" id="4_n5cvp"]
@@ -42,64 +42,51 @@ layout_mode = 2
 [node name="PassiveTrace1" parent="." instance=ExtResource("4_n5cvp")]
 unique_name_in_owner = true
 layout_mode = 2
-button_pressed = false
 
 [node name="PassiveTrace2" parent="." instance=ExtResource("4_n5cvp")]
 unique_name_in_owner = true
 layout_mode = 2
-button_pressed = false
 
 [node name="PassiveTrace3" parent="." instance=ExtResource("4_n5cvp")]
 unique_name_in_owner = true
 layout_mode = 2
-button_pressed = false
 
-[node name="MinorTrace1" parent="." instance=ExtResource("4_n5cvp")]
+[node name="StatTrace1" parent="." instance=ExtResource("4_n5cvp")]
 unique_name_in_owner = true
 layout_mode = 2
-button_pressed = false
 
-[node name="MinorTrace2" parent="." instance=ExtResource("4_n5cvp")]
+[node name="StatTrace2" parent="." instance=ExtResource("4_n5cvp")]
 unique_name_in_owner = true
 layout_mode = 2
-button_pressed = false
 
-[node name="MinorTrace3" parent="." instance=ExtResource("4_n5cvp")]
+[node name="StatTrace3" parent="." instance=ExtResource("4_n5cvp")]
 unique_name_in_owner = true
 layout_mode = 2
-button_pressed = false
 
-[node name="MinorTrace4" parent="." instance=ExtResource("4_n5cvp")]
+[node name="StatTrace4" parent="." instance=ExtResource("4_n5cvp")]
 unique_name_in_owner = true
 layout_mode = 2
-button_pressed = false
 
-[node name="MinorTrace5" parent="." instance=ExtResource("4_n5cvp")]
+[node name="StatTrace5" parent="." instance=ExtResource("4_n5cvp")]
 unique_name_in_owner = true
 layout_mode = 2
-button_pressed = false
 
-[node name="MinorTrace6" parent="." instance=ExtResource("4_n5cvp")]
+[node name="StatTrace6" parent="." instance=ExtResource("4_n5cvp")]
 unique_name_in_owner = true
 layout_mode = 2
-button_pressed = false
 
-[node name="MinorTrace7" parent="." instance=ExtResource("4_n5cvp")]
+[node name="StatTrace7" parent="." instance=ExtResource("4_n5cvp")]
 unique_name_in_owner = true
 layout_mode = 2
-button_pressed = false
 
-[node name="MinorTrace8" parent="." instance=ExtResource("4_n5cvp")]
+[node name="StatTrace8" parent="." instance=ExtResource("4_n5cvp")]
 unique_name_in_owner = true
 layout_mode = 2
-button_pressed = false
 
-[node name="MinorTrace9" parent="." instance=ExtResource("4_n5cvp")]
+[node name="StatTrace9" parent="." instance=ExtResource("4_n5cvp")]
 unique_name_in_owner = true
 layout_mode = 2
-button_pressed = false
 
-[node name="MinorTrace10" parent="." instance=ExtResource("4_n5cvp")]
+[node name="StatTrace10" parent="." instance=ExtResource("4_n5cvp")]
 unique_name_in_owner = true
 layout_mode = 2
-button_pressed = false

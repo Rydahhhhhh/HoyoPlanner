@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dlh4aekng5g22"]
 
-[ext_resource type="Script" path="res://Scenes/Character Planner Menu/sr_label_column.gd" id="1_0mbws"]
+[ext_resource type="Script" path="res://Scenes/sr/sr_label_column.gd" id="1_0mbws"]
 
 [sub_resource type="SystemFont" id="SystemFont_xckqa"]
 font_names = PackedStringArray("Segoe UI")
