@@ -1,5 +1,7 @@
 @tool
 class_name InputCell extends Container
+## TODO The entire documentation...
+
 
 signal value_changed(to)
 
@@ -64,6 +66,7 @@ static func parse_delegated_property(data: Dictionary) -> Dictionary:
 		if data.editor:
 			property.usage |= PROPERTY_USAGE_EDITOR
 	return property
+
 
 func delegate_property(to: Node, property_name: String, alias: String = "", update_editor: bool = false, editor = null):
 	assert(to != null)
