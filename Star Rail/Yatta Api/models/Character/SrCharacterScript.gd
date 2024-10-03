@@ -1,0 +1,2 @@
+class_name SrCharacterScript extends YattaResource
+
